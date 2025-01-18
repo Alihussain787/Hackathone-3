@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.courses{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 16px;
+  row-gap: 32px;
+}
+.achivements{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 16px;
+  row-gap: 32px;
+}
+#backImg{
+  background-image: url('/image/hero-1.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.fp{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px
+}
+
+.fp3{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px
+}
+#backImg2{
+  background-image: url('/image/hero-2.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#shop-img1{
+  background-image: url('/image/shop-img-1.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#shop-img2{
+  background-image: url('/image/shop-img-2.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#shop-img3{
+  background-image: url('/image/shop-img-3.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#shop-img4{
+  background-image: url('/image/shop-img-4.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#shop-img5{
+  background-image: url('/image/shop-img-5.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.spc-img{
+  background-image: url('/image/spc-1.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container{
+  background-image: url('/image/hero-2-bg-shape-cover.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.pricing-box{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 50px
+}
+.team-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px
+}
+.team-gallery{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px
+}
+
+
+@media(max-width: 768px){
+  .fp{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 10px
+  }
+  .fp3{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px
+  }
+  .pricing-box{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 50px
+  }
+  .team-container{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 20px
+  }
+}
