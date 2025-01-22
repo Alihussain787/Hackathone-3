@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const header = () => {
+
+    const [display, setDisplay] = useState(false);
+
     return(
         <div>
         <header className="w-full max-w-[1439px] flex flex-col gap-[16px] max-md:w-full max-md:max-w-3xl max-md:gap-0">
@@ -67,17 +70,33 @@ const header = () => {
                     <div className="w-full bg-white flex justify-between gap-[32px] max-md:hidden">
                         <div className="flex items-center gap-2s">
                             <Link href="/" className="text-#737373] font-bold text-[14px] p-[10px] cursor-pointer hover:text-[#23A6F0]">Home</Link>
-                            <div className="flex">
-                                <Link href="/shop/" className="text-#737373] font-bold text-[14px] p-[10px] cursor-pointer hover:text-[#23A6F0]">Shop</Link>
-                                <Image className="cursor-pointer" src={"/icons/arrow-down.svg"} 
-                                    alt={"icon"} 
-                                    width={"10"} 
-                                    height={"10"}/>
+                           
+                               
+                            <div className="relative text-#737373] font-bold text-[14px] p-[10px] cursor-pointer"> 
+                                <div className="flex items-center justify-between gap-2">
+                                    <Link href={"/components/shop"} className="hover:text-[#23A6F0]">Shop</Link>
+                                    <button onClick={() => setDisplay((prevDisplay) => !prevDisplay)}><Image className="cursor-pointer" src={"/icons/arrow-down.svg"} 
+                                        alt={"icon"} 
+                                        width={"10"} 
+                                        height={"10"}/></button>
+                                </div>  
+                               
+                                <ul style={{ display: display ? "block" : "none" }} className="absolute bg-white py-2 -left-4 rounded">
+                                    <li className="hover:text-[#23A6F0] py-2">
+                                        <Link href={"/components/cloths"} className="hover:text-[#23A6F0] px-[26px]">Cloths</Link>
+                                    </li>
+                                    <li className="hover:text-[#23A6F0]">
+                                        <Link href={"/components/household"} className="hover:text-[#23A6F0] px-[26px]">Household</Link>
+                                    </li>
+                                </ul>
                             </div>
-                            <Link href="/about/" className="text-#737373] font-bold text-[14px] p-[10px] cursor-pointer hover:text-[#23A6F0]">About</Link>
-                            <Link href="/team/" className="text-#737373] font-bold text-[14px] p-[10px] cursor-pointer hover:text-[#23A6F0]">Blog</Link>
-                            <Link href="/contact/" className="text-#737373] font-bold text-[14px] p-[10px] cursor-pointer hover:text-[#23A6F0]">Contact</Link>
-                            <Link href="/pages/" className="text-#737373] font-bold text-[14px] p-[10px] cursor-pointer hover:text-[#23A6F0]">Pages</Link>
+                               
+                               
+                           
+                            <Link href="/components/about/" className="text-#737373] font-bold text-[14px] p-[10px] cursor-pointer hover:text-[#23A6F0]">About</Link>
+                            <Link href="/components/team/" className="text-#737373] font-bold text-[14px] p-[10px] cursor-pointer hover:text-[#23A6F0]">Blog</Link>
+                            <Link href="/components/contact/" className="text-#737373] font-bold text-[14px] p-[10px] cursor-pointer hover:text-[#23A6F0]">Contact</Link>
+                            <Link href="/components/pages/" className="text-#737373] font-bold text-[14px] p-[10px] cursor-pointer hover:text-[#23A6F0]">Pages</Link>
                         </div>
                         <div className="flex items-center gap-[20px]">
                            <div className="text-[#23A6F0] font-bold flex items-center gap-[5px]">

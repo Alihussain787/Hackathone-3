@@ -1,22 +1,41 @@
-"use client"
+
 import { client } from "../sanity/lib/client";
-import { useEffect, useState } from "react";
 import Header from "./components/header/page";
 import Header3 from "./components/header3/page";
 import Footer from "./components/footer/page";
 import Image from "next/image";
 import Link from "next/link";
+import CartManager from "./components/CartManager";
+// import { productFetcher } from "./api/product/products";
 
-interface ProductType {
-    _id: string,
-    title: string,
-    price: number,
-    productImage: string
-    description: string,
-    isNew: boolean,
-    tags: [],
-    _type: string,
-    category: string
+// interface ProductType {
+//     _id: string,
+//     title: string,
+//     price: number,
+//     productImage: string
+//     description: string,
+//     isNew: boolean,
+//     tags: [],
+//     _type: string,
+//     category: string
+// }
+
+const productFetcher = async () => {
+         
+    const products = await client.fetch(`
+    *[_type == 'product']
+    {
+        _id,
+        title,
+        price,
+        "productImage":productImage.asset->url,
+        description,
+        isNew,
+        tags[],
+        _type,
+        category,   
+    }`)
+    return products;          
 }
 
 // export const productFetcher = () => {
@@ -53,18 +72,22 @@ interface ProductType {
 // }
 
 
-const mainPage = () => {
+export default async function Home(){
 
-    // const productList:ProductType[] = productFetcher();
+    const products = await  productFetcher();
+    console.log(products);
     return(
+
     <div>
-        <div className="max-md:hidden">
+        <div className="max-lg:hidden">
             <Header/>
         </div>
-        <div className="md:hidden">
+
+        <div className="lg:hidden">
             <Header3 />
         </div>
-        <section id="backImg" className="w-full max-w-[1439px] h-[716px] flex items-center justify-center max-md:w-full max-md:flex-col max-md:mt-[505px]">
+
+        <section id="backImg" className="w-full max-w-[1439px] h-[716px] flex items-center justify-center max-md:w-full max-md:flex-col px-10">
             <div className="text-white w-[1044px] h-[651px] flex flex-col gap-[35px] justify-center max-md:px-6 max-md:w-full max-md:py-[100px] max-md:gap-[24px] max-md:items-center">
                 <div className="w-[580px] flex flex-col gap-[35px] max-md:w-full max-md:max-w-3xl max-md:gap-[24px] max-md:text-center">
                     <p className="text-[16px] font-bold">SUMMER 2020</p>
@@ -75,91 +98,108 @@ const mainPage = () => {
                 <button className="w-[221px] h-[62px] bg-[#2DC071] text-white font-bold text-[24px] rounded-[5px]">Shop Now</button>
             </div>
         </section>
-        <section className="full max-w-[1439px] bg-[#FAFAFA] flex flex-col items-center justify-center gap-[64px] py-[64px] max-md:w-full">
-            <div className="w-[1050px] flex flex-col gap-10">
+
+        <section className="w-full max-w-[1439px] bg-[#FAFAFA] flex flex-col items-center justify-center gap-[64px] py-[64px] max-md:w-full px-6">
+            <div className="w-full max-w-[1050px] flex flex-col gap-10">
                 <div className="w-full flex flex-col items-center justify-center max-md:text-center">
-                    <h1 className="text-[24px] text-[#252B42] font-bold">EDITOR’S PICK</h1>
-                    <p className="text-[14px] text-[#737373]">Problems trying to resolve the conflict between</p>
+                    <h1 className="text-[24px] text-[#252B42] font-bold">PICK CATEGORY</h1>
+                    <p className="text-[14px] text-[#737373]">Here is the best products</p>
                 </div>
-                <div className="flex gap-8 max-md:hidden">
-                    <Image src={"image/editor-1.svg"} 
-                        alt={"image"} 
-                        width={"510"} 
-                        height={"500"}/>
-                     <Image src={"image/editor-2.svg"} 
-                        alt={"image"} 
-                        width={"240"} 
-                        height={"500"}/>
-                    <div className="flex flex-col gap-4">
-                        <Image src={"image/editor-3.svg"} 
+                <div className="w-full sm:grid sm:grid-cols-3 md:grid md:grid-cols-4 grid grid-cols-2 gap-4 px-6">
+                    <div>
+                    <Link href={'/components/cloths'} className="w-[200px] h-[200px] bg-white flex items-center">
+                            <Image
+                            src={"/image/1-clothes.jpg"} 
                             alt={"image"} 
-                            width={"240"} 
-                            height={"242"}/>
-                        <Image src={"image/editor-4.svg"} 
+                            width={"500"} 
+                            height={"500"} className="w-full "/>
+                        </Link>
+                    </div>
+                        
+                    <div>
+                        <Link href={'/components/cloths'} className="w-[200px] h-[200px] bg-white flex items-center">
+                            <Image
+                            src={"/image/2-cloths.jpg"} 
                             alt={"image"} 
-                            width={"240"} 
-                            height={"242"}/>
+                            width={"500"} 
+                            height={"500"} className="w-[200px]"/>
+                        </Link>
+                    </div>
+                        
+                    <div>
+                        <Link href={'/components/cloths'} className="w-[200px] h-[200px] bg-white flex items-center">
+                            <Image
+                            src={"/image/3 cloths.jpg"} 
+                            alt={"image"} 
+                            width={"500"} 
+                            height={"500"} className="w-[200px]"/>
+                        </Link>
+                    </div>
+
+                    <div>
+                    <Link href={'/components/cloths'} className="w-[200px] h-[200px] bg-white flex items-center">
+                            <Image
+                            src={"/image/4 cloths.jpg"} 
+                            alt={"image"} 
+                            width={"500"} 
+                            height={"500"} className="w-[200px] h-[210px]"/>
+                        </Link>
+                    </div>
+                       
+                    <div>
+                    <Link href={'/components/electronics'} className="w-[200px] h-[200px] bg-white flex items-center">
+                            <Image
+                            src={"/image/2 elect.jpg"} 
+                            alt={"image"} 
+                            width={"500"} 
+                            height={"500"} className="w-[200px]"/>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href={'/components/electronics'} className="w-[200px] h-[200px] bg-white flex items-center">
+                            <Image
+                            src={"/image/3 elec.jpg"} 
+                            alt={"image"} 
+                            width={"500"} 
+                            height={"500"} className="w-[200px]"/>
+                        </Link>
+                    </div>
+
+                    <div>
+                    <Link href={'/components/household'} className="w-[200px] h-[200px] bg-white flex items-center">
+                            <Image
+                            src={"/image/2 house.jpg"} 
+                            alt={"image"} 
+                            width={"500"} 
+                            height={"500"} className="w-[200px]"/>
+                        </Link>
+                    </div>
+                    
+                    <div>
+                        <Link href={'/components/household'} className="w-[200px] h-[200px] bg-white flex items-center">
+                            <Image
+                            src={"/image/1 house.jpg"} 
+                            alt={"image"} 
+                            width={"500"} 
+                            height={"500"} className="w-[200px]"/>
+                        </Link>
                     </div>
                 </div>
             </div>
-            <div className="md:hidden flex flex-col gap-8">
-                    <Image src={"image/new-img.svg"} 
-                        alt={"image"} 
-                        width={"324"} 
-                        height={"500"}/>
-                     <Image src={"image/editor-2.svg"} 
-                        alt={"image"} 
-                        width={"324"} 
-                        height={"500"}/>
-                    <Image src={"image/editor-3.svg"} 
-                            alt={"image"} 
-                            width={"324"} 
-                            height={"242"}/>
-                    <Image src={"image/editor-4.svg"} 
-                            alt={"image"} 
-                            width={"324"} 
-                            height={"242"}/>
-                </div>
         </section>
+        
         <section className="w-full max-w-[1439px] bg-white flex flex-col items-center justify-center py-10 max-md:w-full">
-            <div className="w-[1050px] flex flex-col gap-10">
-                <div className="w-full flex flex-col items-center justify-center max-md:px-6 max-md:text-center">
+            <div className="w-full max-w-[1050px] flex flex-col gap-10">
+                 <div className="w-full flex flex-col items-center justify-center max-md:px-6 max-md:text-center">
                     <p className="text-[20px] text-[#737373]">Featured Products</p>
                     <h1 className="text-[24px] text-[#252B42] font-bold">BESTSELLER PRODUCTS</h1>
                     <p className="text-[14px] text-[#737373]">Problems trying to resolve the conflict between </p>
-                </div>
-                <div className="fp">
-                {/* {
-                        productList.map((product, index) => (
-                            <div key={index}>
-                                <Link href="/shopnow/">
-                                    <div className="border flex flex-col gap-2 h-[450px] rounded">
-                                        <div className="bg-[#f9f9f9] w-full h-[250px] flex items-center justify-center">
-                                            <Image src={product.productImage} 
-                                                alt={"image"} 
-                                                width={"239"} 
-                                                height={"300"} className="w-full h-50 max-h-[250px] rounded"/>
-                                        </div>
-                                        <div className="flex flex-col gap-4 p-2">
-                                            <p className="text-[16px] font-bold text-[#252B42]">{product.title}</p>
-                                            <p className="text-[14px] font-bold text-[#737373] line-clamp-2">{product.description}</p>
-                                            <p className="text-[16px] font-bold text-[#BDBDBD]"><span className="text-[#23856D]">$ {product.price}</span></p>
-                                            
-                                            <div className="flex justify-between  gap-2">
-                                                <button className="w-1/2 bg-[#23A6F0] hover:bg-blue-500 text-white py-2 rounded text-sm text-center">Add to Cart</button>
-                                                <Link href={"#"} className="w-1/2 bg-[#23A6F0] hover:bg-blue-500 text-white py-2 rounded text-sm text-center">Explore</Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </div>
-                        ))
-                    } */}
-                </div>
+                 </div>
+                <CartManager products={products} />
             </div>
-        </section>
+        </section> 
 
-        <section className="w-full bg-[#23856D] pt-20 max-w-[1439px] px-[150px] flex items-center justify-center max-md:w-full max-md:px-0 max-md:flex-col">
+        <section className="w-full bg-[#23856D] pt-20 max-w-[1439px] px-10 flex items-center justify-center max-md:w-full max-md:px-0 max-md:flex-col">
             <div className="text-white w-1/2 flex flex-col gap-[35px] justify-center max-md:w-full max-md:items-center max-md:justify-center">
                 <div className="w-[580px] pr-[100px] flex flex-col gap-[35px] max-md:w-full max-md:items-center max-md:pr-0">
                     <p className="text-[16px] font-bold max-md:">SUMMER 2020</p>
@@ -179,48 +219,42 @@ const mainPage = () => {
             </div>
         </section>
 
-        <section className="w-full max-w-[1439px] px-[100px] bg-white h-[682px] flex items-center justify-center max-md:w-full max-md:flex-col">
+        <section className="border w-full max-w-[1439px] pt-20 px-[100px] bg-white flex items-center justify-center max-md:w-full max-md:flex-col">
             
-            <div className="w-1/2 h-full max-md:hidden">
+            <div className="w-full">
                 <Image src={"image/hero-4.svg"} 
                     alt={"image"} 
                     width={"632"} 
                     height={"491"}/>
             </div>
             
-            <div className="w-1/2 pr-[100px] flex flex-col justify-center gap-8 max-md:px-6 max-md:w-full max-md:max-w-3xl max-md:py-[100px] max-md:gap-[24px]">
-                <div className="w-[580px] pl-[50px] flex flex-col gap-6 max-md:w-full max-md:items-center">
+            <div className="w-full max-w-[50%] flex flex-col justify-center gap-8 max-md:px-6 max-md:w-full max-md:max-w-3xl max-md:py-[100px] max-md:gap-[24px]">
+                <div className="pl-[50px] flex flex-col gap-6 max-md:w-full max-md:items-center">
                     <p className="text-[16px] font-bold text-[#BDBDBD]">SUMMER 2020</p>
-                    <h1 className="w-[375px] text-[40px] font-bold max-md:text-center">Part of the Neural Universe</h1> 
+                    <h1 className="text-[40px] font-bold max-md:text-center">Part of the Neural Universe</h1> 
                     <p className="text-[20px] text-[#737373] max-md:text-center">We know how large objects will act, We know how are objects will act, We know</p>  
                 </div>
-                <div className="pl-[50px] flex items-center gap-2 max-md:flex-col max-md:gap-4">
-                    <button className="w-[221px] h-[62px] bg-[#2DC071] text-white font-bold text-[24px] rounded-[5px] max-md:bg-[#23A6F0]">Buy Now</button>
-                    <button className="w-[221px] h-[62px] bg-white text-[#2DC071] border border-[#2DC071] font-bold text-[24px] rounded-[5px] max-md:text-[#23A6F0] max-md:border-[#23A6F0]">Read More</button>
+                <div className="w-full pl-[50px] flex items-center gap-2 max-lg:flex-col max-lg:pl-0 max-lg:gap-4">
+                    <button className="w-[221px] h-[62px] bg-[#2DC071] text-white font-bold text-[20px] rounded-[5px] max-md:bg-[#23A6F0]">Buy Now</button>
+                    <button className="w-[221px] h-[62px] bg-white text-[#2DC071] border border-[#2DC071] font-bold text-[20px] rounded-[5px] max-md:text-[#23A6F0] max-md:border-[#23A6F0]">Read More</button>
                 </div>
-            </div>
-            <div className="w-1/2 h-full md:hidden">
-                <Image src={"image/hero-4.svg"} 
-                    alt={"image"} 
-                    width={"632"} 
-                    height={"491"}/>
             </div>
         </section>
 
-        <section className="w-full pt-[100px] max-w-[1439px] bg-white flex flex-col items-center justify-center max-md:w-full">
-            <div className="w-[1050px] flex flex-col gap-10">
-                <div className="w-full flex flex-col items-center justify-center max-md:px-6 max-md:text-center">
+        <section className="bg-white w-full pt-[100px] max-w-[1439px] flex flex-col items-center justify-center max-md:w-full px-10">
+            <div className="w-full max-w-[1050px] flex flex-col gap-10">
+                <div className=" w-full flex flex-col items-center justify-center max-md:px-6 max-md:text-center">
                     <p className="text-[14px] text-[#23A6F0]">Practice Advice</p>
                     <h1 className="text-[40px] text-[#252B42] font-bold">Featured Posts</h1>
                     <p className="text-[14px] text-[#737373] text-center">Problems trying to resolve the conflict between 
                         <br/>the two major realms of Classical physics: Newtonian mechanics</p>
                 </div>
-                <div className="fp2 flex items-center justify-center gap-4 max-md:flex-col">
-                    <div className="flex flex-col w-[348px] gap-4 border border-b-[3px]">
+                <div className="w-full grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                    <div className="flex flex-col w-full gap-4 border border-b-[3px]">
                         <Image src={"image/fp-img-1.svg"} 
                             alt={"image"} 
                             width={"348"} 
-                            height={"300"}/>
+                            height={"300"} className="w-full"/>
                         <div className="p-[25px] flex flex-col gap-4">
                             <div className="flex gap-4">
                                 <small className="text-[#8EC2F2]">Google</small>
@@ -258,11 +292,11 @@ const mainPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col w-[348px] gap-4 border border-b-[3px]">
+                    <div className="flex flex-col w-full gap-4 border border-b-[3px]">
                         <Image src={"image/fp-img-2.svg"} 
                             alt={"image"} 
                             width={"348"} 
-                            height={"300"}/>
+                            height={"300"} className="w-full"/>
                         <div className="p-[25px] flex flex-col gap-4">
                             <div className="flex gap-4">
                                 <small className="text-[#8EC2F2]">Google</small>
@@ -300,11 +334,11 @@ const mainPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col w-[348px] gap-4 border border-b-[3px]">
+                    <div className="flex flex-col w-full gap-4 border border-b-[3px]">
                         <Image src={"image/fp-img-3.svg"} 
                             alt={"image"} 
                             width={"348"} 
-                            height={"300"}/>
+                            height={"300"} className="w-full"/>
                         <div className="p-[25px] flex flex-col gap-4">
                             <div className="flex gap-4">
                                 <small className="text-[#8EC2F2]">Google</small>
@@ -345,8 +379,10 @@ const mainPage = () => {
                 </div>
             </div>
         </section>
+
+
+
         <Footer />
     </div>
     )
 }
-export default mainPage;
