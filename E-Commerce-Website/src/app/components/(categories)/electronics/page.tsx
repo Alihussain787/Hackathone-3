@@ -21,7 +21,7 @@ interface ProductType {
             category: string
 }
 
-export const productFetcher = () => {
+const productFetcher = () => {
 
     const [producs, setProducts] = useState([]);
 
