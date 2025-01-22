@@ -159,9 +159,9 @@ const colthsPage = () => {
             <div className="w-[1050px] flex flex-col items-center gap-10">
 
             <CartManager products={products}/>
-                {/* <div className="fp">
+                <div className="fp">
                     {
-                        category.map((product, index) => (
+                        products.map((product, index) => (
                             <div key={index}>
                                 <Link href={`/components/${product?._id}`}>
                                     <div className="border flex flex-col gap-2 h-[450px] rounded">
@@ -186,7 +186,7 @@ const colthsPage = () => {
                             </div>
                         ))
                     }
-                </div> */}
+                </div>
                 <div className="border border-[#BDBDBD] rounded w-[313px] h-[74px] flex">
                     <div className="cursor-pointer border-r w-1/4 h-full flex items-center justify-center bg-[#F3F3F3] text-[#BDBDBD] font-bold">
                         First

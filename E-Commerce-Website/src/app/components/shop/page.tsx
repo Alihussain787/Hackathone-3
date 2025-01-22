@@ -74,9 +74,6 @@ const ProductListPage = () => {
                 setShowAll(false)
             }
             
-            
-  
-//     //     useEffect(() => {
 //     //         const fetchData = async () => {
 //     //                 try{
 //     //                     const response = await client.fetch(`

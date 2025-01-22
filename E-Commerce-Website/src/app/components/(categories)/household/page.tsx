@@ -25,8 +25,6 @@ const productFetcher = () => {
 
     const [producs, setProducts] = useState([]);
 
-    console.log(producs);
-
     useEffect(() => {
         const fetchData = async () => {
             try{
@@ -188,6 +186,7 @@ const colthsPage = () => {
                         ))
                     }
                 </div> */}
+                
                 <div className="border border-[#BDBDBD] rounded w-[313px] h-[74px] flex">
                     <div className="cursor-pointer border-r w-1/4 h-full flex items-center justify-center bg-[#F3F3F3] text-[#BDBDBD] font-bold">
                         First

@@ -58,13 +58,7 @@ const productFetcher = () => {
 
 const colthsPage = () => {
 
-    const products:ProductType[] = productFetcher();
-    
-    // const [cart, setCart] = useState<ProductType[]>([]);
-    // const addToCart = (product: any) => {
-    //     setCart((prevCart) => [...prevCart, product]);
-    //   };
-    //   console.log("this is cart",cart);
+    const products = productFetcher();
 
     return(
         <div>
@@ -167,7 +161,7 @@ const colthsPage = () => {
 
                 {/* <div className="fp">
                     {
-                        category.map((product, index) => (
+                        products.map((product, index) => (
                             <div key={index} className="border">
                                 <Link href={`/components/${product?._id}`}>
                                     <div className="flex flex-col gap-2 h-[400px] rounded">
@@ -191,6 +185,8 @@ const colthsPage = () => {
                         ))
                     }
                 </div> */}
+
+
                 <div className="border border-[#BDBDBD] rounded w-[313px] h-[74px] flex">
                     <div className="cursor-pointer border-r w-1/4 h-full flex items-center justify-center bg-[#F3F3F3] text-[#BDBDBD] font-bold">
                         First

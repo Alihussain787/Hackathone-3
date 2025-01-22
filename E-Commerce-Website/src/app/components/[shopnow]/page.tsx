@@ -23,8 +23,6 @@ interface Product
 
 const Shop = ({params}:{params:{shopnow:string}}) => {
 
-    // console.log(params.shopnow);
-
     const [data, setData] = useState<Product[]>([]);
     console.log("this is fetched data",data);
 
