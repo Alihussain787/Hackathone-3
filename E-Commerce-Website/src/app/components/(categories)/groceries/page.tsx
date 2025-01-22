@@ -9,56 +9,40 @@ import Link from "next/link";
 import CartManager from "../../CartManager";
 
 
-interface ProductType {
-            _id: string,
-            title: string,
-            price: number,
-            productImage: string
-            description: string,
-            isNew: boolean,
-            tags: [],
-            _type: string,
-            category: string
+// interface ProductType {
+//             _id: string,
+//             title: string,
+//             price: number,
+//             productImage: string
+//             description: string,
+//             isNew: boolean,
+//             tags: [],
+//             _type: string,
+//             category: string
+// }
+
+const productFetcher = async () => {
+         
+    const products = await client.fetch(`
+    *[_type == 'product'][category == 'groceries']
+    {
+        _id,
+        title,
+        price,
+        "productImage":productImage.asset->url,
+        description,
+        isNew,
+        tags[],
+        _type,
+        category,   
+    }`)
+    return products;          
 }
 
-const productFetcher = () => {
+const colthsPage = async() => {
 
-    const [producs, setProducts] = useState([]);
-
-    console.log(producs);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try{
-                const response = await client.fetch(`
-                 *[_type == 'product'][category == 'groceries']
-                {
-                    _id,
-                    title,
-                    price,
-                    "productImage":productImage.asset->url,
-                    description,
-                    isNew,
-                    tags[],
-                    _type,
-                    category,   
-                }
-                `);
-                setProducts(await response)
-            }catch(error){
-                console.error("Error in fetching products", error);
-            }
-        }
-        fetchData();
-    }, [])
-    return producs;
-}
-
-
-
-const colthsPage = () => {
-
-    const products:ProductType[] = productFetcher();
+    const products = await  productFetcher();
+    console.log(products);
 
     return(
         <div>
@@ -150,6 +134,18 @@ const colthsPage = () => {
                         </div> */}
                         {/* <button onClick={callCategory} className="bg-[#23A6F0] w-[94px] h-[50px] text-white">Filter</button> */}
                     </div>
+                    <div className="flex gap-2">
+                        <div>
+                            <select className="cursor-pointer flex items-center justify-center gap-2 border w-[141px] h-[50px] text-[#737373] outline-0">
+                                <option value="all">All</option>
+                                <option value="cloths">Cloths</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="groceries">Groceries</option>
+                                <option value="household">Household Items</option>
+                            </select>
+                        </div>
+                            <button className="bg-[#23A6F0] w-[94px] h-[50px] text-white">Filter</button>
+                        </div>
                 </div>
             </div>
         </section>

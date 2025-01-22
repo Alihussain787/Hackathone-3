@@ -1,6 +1,4 @@
-"use client"
 import { client } from "../../../../sanity/lib/client";
-import { useEffect, useState } from "react";
 import Header from "../../header2/page";
 import Header3 from "../../header3/page"
 import Footer from "../../footer2/page";
@@ -9,56 +7,41 @@ import Link from "next/link";
 import CartManager from "../../CartManager";
 
 
-interface ProductType {
-            _id: string,
-            title: string,
-            price: number,
-            productImage: string
-            description: string,
-            isNew: boolean,
-            tags: [],
-            _type: string,
-            category: string
-}
+// interface ProductType {
+//             _id: string,
+//             title: string,
+//             price: number,
+//             productImage: string
+//             description: string,
+//             isNew: boolean,
+//             tags: [],
+//             _type: string,
+//             category: string
+// }
 
-const productFetcher = () => {
-
-    const [producs, setProducts] = useState([]);
-
-    console.log(producs);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try{
-                const response = await client.fetch(`
-                 *[_type == 'product'][category == 'electronics']
-                {
-                    _id,
-                    title,
-                    price,
-                    "productImage":productImage.asset->url,
-                    description,
-                    isNew,
-                    tags[],
-                    _type,
-                    category,   
-                }
-                `);
-                setProducts(await response)
-            }catch(error){
-                console.error("Error in fetching products", error);
-            }
-        }
-        fetchData();
-    }, [])
-    return producs;
+const productFetcher = async () => {
+         
+    const products = await client.fetch(`
+    *[_type == 'product'][category == 'electronics']
+    {
+        _id,
+        title,
+        price,
+        "productImage":productImage.asset->url,
+        description,
+        isNew,
+        tags[],
+        _type,
+        category,   
+    }`)
+    return products;          
 }
 
 
+const colthsPage = async() => {
 
-const colthsPage = () => {
-
-    const products:ProductType[] = productFetcher();
+    const products = await  productFetcher();
+    console.log(products);
 
     return(
         <div>
@@ -150,6 +133,19 @@ const colthsPage = () => {
                         </div> */}
                         {/* <button onClick={callCategory} className="bg-[#23A6F0] w-[94px] h-[50px] text-white">Filter</button> */}
                     </div>
+
+                    <div className="flex gap-2">
+                        <div>
+                            <select className="cursor-pointer flex items-center justify-center gap-2 border w-[141px] h-[50px] text-[#737373] outline-0">
+                                <option value="all">All</option>
+                                <option value="cloths">Cloths</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="groceries">Groceries</option>
+                                <option value="household">Household Items</option>
+                            </select>
+                        </div>
+                            <button className="bg-[#23A6F0] w-[94px] h-[50px] text-white">Filter</button>
+                        </div>
                 </div>
             </div>
         </section>
@@ -158,46 +154,8 @@ const colthsPage = () => {
             <section className="w-full max-w-[1439px] bg-white py-[100px] flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl">
             <div className="w-[1050px] flex flex-col items-center gap-10">
 
-            <CartManager products={products}/>
-                <div className="fp">
-                    {
-                        products.map((product, index) => (
-                            <div key={index}>
-                                <Link href={`/components/${product?._id}`}>
-                                    <div className="border flex flex-col gap-2 h-[450px] rounded">
-                                        <div className="bg-[#f9f9f9] w-full h-[250px] flex items-center justify-center">
-                                            <Image src={product.productImage} 
-                                                alt={"image"} 
-                                                width={"239"} 
-                                                height={"300"} className="w-full h-50 max-h-[250px] rounded"/>
-                                        </div>
-                                        <div className="flex flex-col gap-4 p-2">
-                                            <p className="text-[16px] font-bold text-[#252B42]">{product.title}</p>
-                                            <p className="text-[14px] font-bold text-[#737373] line-clamp-2">{product.description}</p>
-                                            <p className="text-[16px] font-bold text-[#BDBDBD]"><span className="text-[#23856D]">$ {product.price}</span></p>
-                                            
-                                            
-                                                <button className="w-full bg-[#23A6F0] hover:bg-blue-500 text-white py-2 rounded-lg text-sm text-center">Add to Cart</button>
-    
-                                            
-                                        </div>
-                                    </div>
-                                </Link>
-                            </div>
-                        ))
-                    }
-                </div>
-                <div className="border border-[#BDBDBD] rounded w-[313px] h-[74px] flex">
-                    <div className="cursor-pointer border-r w-1/4 h-full flex items-center justify-center bg-[#F3F3F3] text-[#BDBDBD] font-bold">
-                        First
-                    </div>
-                    <div className="w-1/6 h-full border-r flex items-center justify-center text-[#23A6F0]">1</div>
-                    <div className="w-1/6 h-full border-r flex items-center justify-center text-white bg-[#23A6F0]">2</div>
-                    <div className="w-1/6 h-full border-r flex items-center justify-center text-[#23A6F0]">3</div>
-                    <div className="cursor-pointer w-1/4 h-full- flex items-center justify-center text-[#23A6F0] font-bold">
-                        Next
-                    </div>
-                </div>
+                <CartManager products={products}/>
+                
             </div>
         </section>
 

@@ -8,172 +8,42 @@ import Image from "next/image";
 import Link from "next/link";
 import CartManager from "../CartManager";
 
-interface ProductType {
-            _id: string,
-            title: string,
-            price: number,
-            productImage: string
-            description: string,
-            isNew: boolean,
-            tags: [],
-            _type: string,
-            category: string
+// interface ProductType {
+//             _id: string,
+//             title: string,
+//             price: number,
+//             productImage: string
+//             description: string,
+//             isNew: boolean,
+//             tags: [],
+//             _type: string,
+//             category: string
+// }
+
+const productFetcher = async () => {
+         
+    const products = await client.fetch(`
+    *[_type == 'product'][category == 'cloths']
+    {
+        _id,
+        title,
+        price,
+        "productImage":productImage.asset->url,
+        description,
+        isNew,
+        tags[],
+        _type,
+        category,   
+    }`)
+    return products;          
 }
 
-const ProductListPage = () => {
+
+const ProductListPage = async() => {
       
-        const [producs, setProducts] = useState<ProductType[]>([]);
-        const [showAll, setShowAll] = useState(true);
-        
-            const fetchData = async (e:any) => {
-                if(e == 'cloths' || e == 'household' || e == 'electronics' || e == 'groceries'){
-                    try{
-                        const response = await client.fetch(`
-                         *[_type == 'product'][category == '${e}']
-                        {
-                            _id,
-                            title,
-                            price,
-                            "productImage":productImage.asset->url,
-                            description,
-                            isNew,
-                            tags[],
-                            _type,
-                            category,   
-                        }
-                        `);
-                        setProducts(await response)
-                    }catch(error){
-                        console.error("Error in fetching products", error);
-                    }
-                }else{
-                    try{
-                        const response = await client.fetch(`
-                         *[_type == 'product']
-                        {
-                            _id,
-                            title,
-                            price,
-                            "productImage":productImage.asset->url,
-                            description,
-                            isNew,
-                            tags[],
-                            _type,
-                            category,   
-                        }
-                        `);
-                        setProducts(await response)
-                    }catch(error){
-                        console.error("Error in fetching products", error);
-                    }
-                }
-                    
-            }
-            if(showAll){
-                fetchData('all');
-                setShowAll(false)
-            }
-            
-//     //         const fetchData = async () => {
-//     //                 try{
-//     //                     const response = await client.fetch(`
-//     //                      *[_type == 'product'][category == 'cloths']
-//     //                     {
-//     //                         _id,
-//     //                         title,
-//     //                         price,
-//     //                         "productImage":productImage.asset->url,
-//     //                         description,
-//     //                         isNew,
-//     //                         tags[],
-//     //                         _type,
-//     //                         category,   
-//     //                     }
-//     //                     `);
-//     //                     setProducts(await response);
-//     //                 }catch(error){
-//     //                     console.error("Error in fetching products", error);
-//     //                 }
-//     //         }
-//     //         fetchData();
-//     //     }, [])
-//     //     return producs;
-//     // }
+    const products = await productFetcher();
 
-    // const fetchHouseHold = () => {        
-    //     useEffect(() => {
-    //         const fetchData = async () => {
-    //                 try{
-    //                     const response = await client.fetch(`
-    //                      *[_type == 'product'][category == 'household']
-    //                     {
-    //                         _id,
-    //                         title,
-    //                         price,
-    //                         "productImage":productImage.asset->url,
-    //                         description,
-    //                         isNew,
-    //                         tags[],
-    //                         _type,
-    //                         category,   
-    //                     }
-    //                     `);
-    //                     setProducts(await response)
-    //                 }catch(error){
-    //                     console.error("Error in fetching products", error);
-    //                 }
-    //         }
-    //         fetchData();
-    //     }, [])
-    //     return producs;
-    // }
-    
-    
-// //    if(value == 'cloths'){
-// //     fetchCloths();
-// //    }else if(value == 'household'){
-// //     fetchHouseHold();
-// //    }else{
-// //     fetchAllProducts();
-// //    }
-
-
-//      const productList:ProductType[] = producs;
-
-// const [products, setProducts] = useState<ProductType[]>([]);
-// console.log(products);
-// const [category, setCategory] = useState('cloths');
-
-// console.log("value of ",category)
-
-// useEffect(() => {
-//     async function fetchFilteredData() {
-//       const res = await client.fetch(`
-        
-//         *[_type == 'product'][category == 'cloths']
-//             {
-//                 _id,
-//                 title,
-//                 price,
-//                 "productImage":productImage.asset->url,
-//                 description,
-//                 isNew,
-//                 tags[],
-//                 _type,
-//                 category,   
-//             }
-//         `);
-//         setProducts(await res);
-      
-//     }
-//     fetchFilteredData();
-//   }, []);
-    
-//   const productList:ProductType[] = products;
-//   console.log("This is pro list", productList);
-    
-const products:ProductType[] = producs;
-return(
+    return(
         <div>
         
         <div className="max-[920px]:hidden">
@@ -255,8 +125,8 @@ return(
                                 height={"16"}/>
                         </div>
                     </div>
-                    <div className="flex gap-2">
-                         <div>
+                    {/* <div className="flex gap-2">
+                    <div>
                         <select onChange={(e) => {fetchData(e.target.value)}} className="cursor-pointer flex items-center justify-center gap-2 border w-[141px] h-[50px] text-[#737373] outline-0">
                             <option value="all">All</option>
                             <option value="cloths">Cloths</option>
@@ -264,10 +134,23 @@ return(
                             <option value="groceries">Groceries</option>
                             <option value="household">Household Items</option>
                         </select>
-                        </div>
-                        <button className="bg-[#23A6F0] w-[94px] h-[50px] text-white">Filter</button>
                     </div>
-                </div>
+                    <button className="bg-[#23A6F0] w-[94px] h-[50px] text-white">Filter</button>
+                    </div> */}
+
+                    <div className="flex gap-2">
+                        <div>
+                            <select className="cursor-pointer flex items-center justify-center gap-2 border w-[141px] h-[50px] text-[#737373] outline-0">
+                                <option value="all">All</option>
+                                <option value="cloths">Cloths</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="groceries">Groceries</option>
+                                <option value="household">Household Items</option>
+                            </select>
+                        </div>
+                            <button className="bg-[#23A6F0] w-[94px] h-[50px] text-white">Filter</button>
+                        </div>
+                    </div>
             </div>
         </section>
         {/* Product List */}
