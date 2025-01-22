@@ -1,6 +1,4 @@
-"use client"
 import { client } from "../../../sanity/lib/client";
-import { useState, useEffect} from "react";
 import Header from "../header2/page";
 import Header3 from "../header3/page";
 import Footer from "../footer2/page";
