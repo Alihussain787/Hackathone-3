@@ -19,9 +19,9 @@ const header2 = () => {
 
     return(
         <div>
-        <header className="w-full max-w-[1439px] flex flex-col gap-[16px] max-md:w-full max-md:max-w-3xl max-md:gap-0">
-            <div className="w-full max-w-[1439px] bg-[#23856D] flex items-center justify-center">
-            <div className="w-full max-w-[1050px] text-white flex justify-between py-[10px] max-[920px]:hidden">
+        <header className="w-full max-w-[1439px] flex flex-col gap-[16px] max-md:w-full max-md:max-w-3xl max-md:gap-0 max-lg:hidden">
+            <div className="w-full max-w-[1439px] bg-[#23856D] flex items-center justify-center px-10">
+                <div className="w-full max-w-[1050px] text-white flex justify-between py-[10px]">
                     <div className="flex gap-[10px] font-bold">
                         <div className="flex gap-[5px] py-[10px] ">
                             <Image src={"/icons/phone.svg"} 
@@ -60,23 +60,25 @@ const header2 = () => {
                         </ul>
                     </div>
                 </div>
-                </div>
-                <div className="w-full bg-[#FFFFFF] flex items-center justify-center py-[12px] max-md:bg-white">
-                <nav className="w-full max-w-[1050px] flex justify-between gap-28 max-md:w-full max-md:h-[40px] max-md:max-w-3xl max-md:px-6">
-                    <div className="text-[24px] cursor-pointer max-md:absolute">
-                        <Link href="/"><h3 className="font-bold max-md:font-bold max-md:text-[24px]">Bandage</h3></Link>
+            </div>
+            <div className="w-full max-w-[1439px] bg-[#FFFFFF] flex items-center justify-center py-[12px] max-md:bg-white px-10">
+                <nav className="w-full max-w-[1050px] flex justify-between gap-[5%] max-md:w-full max-md:h-[40px] max-md:max-w-3xl">
+                    <div className="text-[24px] cursor-pointer flex items-center justify-center">
+                        <Link href="/"><h3 className="font-bold  text-[#737373] max-md:font-bold max-md:text-[24px]">Bandage</h3></Link>
                     </div>
-                    <div className="w-full bg-white flex justify-between gap-[32px]">
+                    <div className="w-full bg-white  flex justify-between gap-[32px]">
                         <div className="flex items-center gap-2 max-md:gap-[30px] max-md:flex-col max-md:bg-white max-md:absolute max-md:top-14 max-md:left-[-24px] max-md:w-full max-md:py-20 max-md:text-center">
                             <Link href="/" className="text-[#737373] font-bold text-[14px] p-[10px] cursor-pointer max-md:text-[30px] hover:text-[#23A6F0]">Home</Link>
                             
                             <div className="relative text-#737373] font-bold text-[14px] p-[10px] cursor-pointer"> 
                                 <div className="flex items-center justify-between gap-2">
                                     <Link href={"/components/shop"} className="text-[#737373] font-bold text-[14px] p-[10px] cursor-pointer max-md:text-[30px] hover:text-[#23A6F0]">Shop</Link>
-                                    <button onClick={() => setDisplay((prevDisplay) => !prevDisplay)}><Image className="cursor-pointer" src={"/icons/arrow-down.svg"} 
+                                    <button onClick={() => setDisplay((prevDisplay) => !prevDisplay)}>
+                                        <Image className="cursor-pointer" src={"/icons/arrow-down.svg"} 
                                         alt={"icon"} 
                                         width={"10"} 
-                                        height={"10"}/></button>
+                                        height={"10"}/>
+                                    </button>
                                 </div>  
                                
                                 <ul style={{ display: display ? "block" : "none" }} className="absolute bg-white py-2 -left-2 rounded">

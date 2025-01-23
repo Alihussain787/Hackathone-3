@@ -25,7 +25,6 @@ const Shop = ({params}:{params:{shopnow:string}}) => {
 
     const [data, setData] = useState<Product[]>([]);
     console.log("this is fetched data",data);
-
     useEffect(() => {
         async function dataFetching(){
             try{
@@ -41,26 +40,26 @@ const Shop = ({params}:{params:{shopnow:string}}) => {
                         tags[],
                         _type,
                         category,   
-                    }
+                }
                 `);
-                setData(await response);
+                return setData(await response);
                 }catch(error){
                     console.error("Error in fetching products", error);
                 }
         }
-        dataFetching()
-    }, []);
-
+        dataFetching();
+    },[])
     return(
         <div>
-            <div className="max-[920px]:hidden">
-            <Header/>
-        </div>
-        <div className="md-[920px]:hidden">
-            <Header3 />
-        </div>
-            <div className="w-full max-w-[1439px] bg-[#FAFAFA] flex items-center justify-center py-10 max-md:w-full max-md:max-w-3xl">
-                <div className="w-[1050px] flex items-center justify-start gap-2 max-md:justify-center">
+           <div className="max-lg:hidden">
+                <Header/>
+            </div>
+            <div className="lg:hidden">
+                <Header3 />
+            </div>
+
+            <div className="w-full max-w-[1439px] bg-[#FAFAFA] flex items-center justify-center py-10 max-md:w-full max-md:max-w-3xl px-10">
+                <div className="w-full max-w-[1050px] flex items-center justify-start gap-2 max-md:justify-center">
                     <Link href="/" className="p-[10px] cursor-pointer">Home</Link>
                         <span>
                             <Image src={"/icons/arrow-right-2.svg"} 
@@ -71,6 +70,7 @@ const Shop = ({params}:{params:{shopnow:string}}) => {
                     <Link href="/about/" className="p-[10px] cursor-pointer text-[#BDBDBD]">Shopnow</Link>
                 </div>
             </div>
+
         <section className="w-full max-w-[1439px] bg-[#FAFAFA] py-2 flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl">
                 {
                 data.map((item, index) => (
@@ -125,15 +125,16 @@ const Shop = ({params}:{params:{shopnow:string}}) => {
                     ))
                 }
         </section>
-        <section className="w-full max-w-[1439px] bg-white py-2 flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl">
-            <div className="w-[1050px] flex items-center gap-20">
+
+        <section className="w-full max-w-[1439px] bg-white py-2 flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl px-10">
+            <div className="w-full max-w-[1050px] flex items-center gap-20">
                 <div className="w-[1050px] py-10 flex items-center justify-center gap-6 border-b">
                     <p className="text-[14px] text-[#737373] font-semibold">Description</p>   
                     <p className="text-[14px] text-[#737373] font-semibold">Additional Information</p>
                     <p className="text-[14px] text-[#737373] font-semibold">Reviews (0)</p>
                 </div>
             </div>
-            <div className="w-[1050px] py-10 flex items-center justify-center gap-12 max-md:flex-col">
+            <div className="w-full max-w-[1050px] py-10 flex items-center justify-center gap-12 max-md:flex-col">
                     <div className="w-1/3"><Image src={"/image/bsp-9.svg"} 
                                 alt={"icon"} 
                                 width={"316"} 
@@ -216,12 +217,12 @@ const Shop = ({params}:{params:{shopnow:string}}) => {
                 </div>
         </section>
 
-        <section className="w-full bg-[#FAFAFA] max-w-[1439px] pb-[100px] flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl">
-            <div className="w-[1050px] flex flex-col gap-6 max-md:max-w-3xl">
+        <section className="w-full bg-[#FAFAFA] max-w-[1439px] pb-[100px] flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl px-10">
+            <div className="w-full max-w-[1050px] flex flex-col gap-6 max-md:max-w-3xl">
                 <div className="py-6 border-b max-md:py-0 max-md:pt-6 max-md:border-b-0">
                      <h1 className="text-[24] font-bold max-md:text-center">BESTSELLER PRODUCTS</h1>
                 </div>
-                <div className="fp3">
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     <div className="flex bg-white flex-col gap-6 items-center">
                         <Image src={"image/bsp-1.svg"} 
                             alt={"image"} 
@@ -297,39 +298,39 @@ const Shop = ({params}:{params:{shopnow:string}}) => {
                 </div>
             </div>
         </section>
-        <section className="w-full max-w-[1439px] bg-[#FAFAFA] py-[50px] flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl">
-            <div className="w-[1050px] flex items-center gap-20 max-md:flex-col">
+        
+
+        <section className="w-full max-w-[1439px] bg-[#FAFAFA] py-[50px] flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl px-10">
+            <div className="w-full max-w-[1050px] flex items-center justify-between max-md:flex-col gap-10">
                 <Image src={"/icons/brand-logo-1.svg"} 
                     alt={"icon"} 
                     width={"103"} 
-                    height={"34"}/>
+                    height={"34"} className="w-full max-w-[90px]"/>
                 <Image src={"/icons/brand-logo-2.svg"} 
                     alt={"icon"} 
                     width={"103"} 
-                    height={"34"}/>
+                    height={"34"} className="w-full max-w-[90px]"/>
                 <Image src={"/icons/brand-logo-3.svg"} 
                     alt={"icon"} 
                     width={"103"} 
-                    height={"34"}/>
+                    height={"34"} className="w-full max-w-[90px]"/>
                 <Image src={"/icons/brand-logo-4.svg"} 
                     alt={"icon"} 
                     width={"103"} 
-                    height={"34"}/>
+                    height={"34"} className="w-full max-w-[90px]"/>
                 <Image src={"/icons/brand-logo-5.svg"} 
                     alt={"icon"} 
                     width={"103"} 
-                    height={"34"}/>
+                    height={"34"} className="w-full max-w-[50px]"/>
                 <Image src={"/icons/brand-logo-6.svg"} 
                     alt={"icon"} 
                     width={"103"} 
-                    height={"34"}/>
+                    height={"34"} className="w-full max-w-[50px]"/>
             </div>
-        </section>
+        </section>   
 
-
-
-            <Footer />
-        </div>
+        <Footer />
+    </div>
     )
 }
 export default Shop;

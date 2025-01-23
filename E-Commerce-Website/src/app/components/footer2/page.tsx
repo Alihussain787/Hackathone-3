@@ -1,40 +1,33 @@
 import React from "react";
-import Image from "next/image";
+import { FaFacebook } from "react-icons/fa";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa";
 
 const footer = () => {
     return(
         <div>
-            <footer className="w-full max-w-[1439px] bg-white flex items-center justify-center mt-[80px] max-md:w-full ">
-                <div className="w-full flex flex-col gap-[80px] max-md:w-full max-md:justify-start ">
+            <footer className="w-full max-w-[1439px] bg-white flex items-center justify-center mt-[80px] max-md:w-full px-10">
+                <div className="w-full flex flex-col gap-[80px] max-md:w-full max-md:justify-start">
                     <div className="w-full bg-white flex items-center justify-center py-10 max-md:w-full max-md:flex-col ">
                         <div className="w-full max-w-[1050px] pb-14 border-b flex justify-between items-center max-md:flex-col max-md:gap-4 max-md:items-start">
-                            <h1 className="text-24px text-[#252B42] font-bold max-md:px-10">Bandage</h1>
-                            <ul className="flex gap-[12px] px-10">
-                            <li className="cursor-pointer">
-                                <Image className="rounded-tl-[25%] rounded-br-[25%]"src={"/icons/fb.svg"} 
-                                alt={"icon"} 
-                                width={"16"} 
-                                height={"16"}/>
-                            </li>
-                            <li className="cursor-pointer">
-                                <Image className="rounded-tl-[25%] rounded-br-[25%]"src={"icons/ins.svg"} 
-                                alt={"icon"} 
-                                width={"16"} 
-                                height={"16"}/>
-                            </li>
-                            <li className="cursor-pointer">
-                                <Image className="rounded-tl-[25%] rounded-br-[25%]"src={"/icons/tw.svg"} 
-                                alt={"icon"} 
-                                width={"16"} 
-                                height={"16"}/>
-                            </li>
-                            
-                        </ul>
+                            <h1 className="text-24px text-[#252B42] font-bold">Bandage</h1>
+                            <ul className="flex items-center justify-center gap-[12px]">
+                                <li className="cursor-pointer text-[#23A6F0]">
+                                    <FaSquareInstagram/>
+                                </li>
+                                <li className="cursor-pointer text-[#23A6F0]">
+                                    <FaFacebook/>
+                                </li>
+                                <li className="cursor-pointer text-[#23A6F0]">
+                                    <FaTwitter/>
+                                </li>
+                                                                                    
+                            </ul>
                         </div>
                     </div>
                     <div className="w-full flex items-center justify-center">
-                        <div className="w-[1050px] flex max-md:flex-col">
-                        <div className="w-[250px] flex flex-col gap-[20px] max-md:w-full">
+                    <div className="w-full max-w-[1050px] grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                        <div className="w-full flex flex-col gap-[20px] max-md:w-full">
                             <h3 className="text-[16px] font-bold max-md:text-center">Company Info</h3>
                             <ul className="max-md:text-center text-[14px] text-bold text-[#737373]">
                                 <li className="py-[8px]">About Us</li>
@@ -43,7 +36,7 @@ const footer = () => {
                                 <li className="py-[8px]">Blog</li>
                             </ul>
                         </div>
-                        <div className="w-[250px] flex flex-col gap-[20px] max-md:w-full max-md:max-w-3xl">
+                        <div className="w-full flex flex-col gap-[20px] max-md:w-full max-md:max-w-3xl">
                             <h3 className="text-[16px] font-bold max-md:text-center">Legal</h3>
                             <ul className="max-md:text-center text-[14px] text-bold text-[#737373]">
                                 <li className="py-[8px]">About Us</li>
@@ -52,7 +45,7 @@ const footer = () => {
                                 <li className="py-[8px]">Blog</li>
                             </ul>
                         </div>
-                        <div className="w-[250px] flex flex-col gap-[20px] max-md:w-full max-md:max-w-3xl">
+                        <div className="w-full flex flex-col gap-[20px] max-md:w-full max-md:max-w-3xl">
                             <h3 className="text-[16px] font-bold max-md:text-center">Features</h3>
                             <ul className="max-md:text-center text-[14px] text-bold text-[#737373]">
                                 <li className="py-[8px]">Business Marketing</li>
@@ -61,7 +54,7 @@ const footer = () => {
                                 <li className="py-[8px]">Unlimited Support</li>
                             </ul>
                         </div>
-                        <div className="w-[250px] flex flex-col gap-[20px] max-md:w-full max-md:max-w-3xl">
+                        <div className="w-full flex flex-col gap-[20px] max-md:w-full max-md:max-w-3xl">
                             <h3 className="text-[16px] font-bold max-md:text-center">Resources</h3>
                             <ul className="max-md:text-center text-[14px] text-bold text-[#737373]">
                                 <li className="py-[8px]">IOS & Android</li>
@@ -70,7 +63,7 @@ const footer = () => {
                                 <li className="py-[8px]">API</li>
                             </ul>
                         </div>
-                        <div className="w-[350px] flex flex-col gap-[20px] max-md:w-full max-md:max-w-3xl">
+                        <div className="w-full flex flex-col gap-[20px] max-md:w-full max-md:max-w-3xl">
                             <h3 className="text-[16px] font-bold max-md:text-center">Company Info</h3>
                             <ul className="max-md:text-center text-[14px] text-bold text-[#737373]">
                                 <li>
@@ -84,7 +77,7 @@ const footer = () => {
                                 </li>
                             </ul>
                         </div>
-                        </div>
+                    </div>
                     </div>
                     <div className="w-full bg-[#FAFAFA] flex items-center justify-center py-4 max-md:w-full">
                         <div className="w-full max-w-[1050px] flex justify-start items-center max-md:justify-center">
