@@ -1,3 +1,4 @@
+
 import { client } from "../../../../sanity/lib/client";;
 import Header from "../../header2/page";
 import Header3 from "../../header3/page"

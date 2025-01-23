@@ -1,13 +1,13 @@
-"use client"
+// "use client"
 import {client} from "../../../sanity/lib/client";
 import Header from "../header2/page";
 import Header3 from "../header3/page"
 import Footer from "../footer2/page";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-interface Product 
+interface ProductType 
     {
         _id: string,
         title: string,
@@ -21,34 +21,32 @@ interface Product
         stock: number
     }; 
 
-const Shop = ({params}:{params:{shopnow:string}}) => {
+    const ShopNowPage = async ({ params }: { params: { shopnow: string } }) => {
+      const { shopnow } = params;
+    
+      // Agar `shopnow` parameter available nahi hai
+      if (!shopnow) {
+        return <p>Error: Koi "shopnow" parameter nahi mila!</p>;
+      }
+    console.log(shopnow);
 
-    const [data, setData] = useState<Product[]>([]);
-    console.log("this is fetched data",data);
-    useEffect(() => {
-        async function dataFetching(){
-            try{
-                const response = await client.fetch(`
-                    *[_type == 'product'][_id == '${params.shopnow}']
-                    {
-                        _id,
-                        title,
-                        price,
-                        "productImage":productImage.asset->url,
-                        description,
-                        isNew,
-                        tags[],
-                        _type,
-                        category,   
-                }
-                `);
-                return setData(await response);
-                }catch(error){
-                    console.error("Error in fetching products", error);
-                }
+    const response = await client.fetch(`*[_type == "product"][_id == "${shopnow}"]
+        {
+          _id,
+          title,
+          price,
+          "productImage":productImage.asset->url,
+          description,
+          isNew,
+          tags[],
+          _type,
+          category,   
         }
-        dataFetching();
-    },[])
+      `);
+    const data:ProductType[] = await response;
+    console.log("data",data);
+
+
     return(
         <div>
            <div className="max-lg:hidden">
@@ -333,4 +331,4 @@ const Shop = ({params}:{params:{shopnow:string}}) => {
     </div>
     )
 }
-export default Shop;
+export default ShopNowPage;
