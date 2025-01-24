@@ -11,6 +11,7 @@ import { FiSearch } from "react-icons/fi";
 import { BsCart } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa6";
+import { RiArrowDownSLine } from "react-icons/ri";
 
 const header = () => {
 
@@ -18,23 +19,24 @@ const header = () => {
 
     return(
         <div>
-        <header className="w-full max-w-[1439px] flex flex-col max-md:w-full max-md:max-w-3xl max-md:gap-0">
+        <header className="w-full flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl max-md:gap-0">
+            <div className="w-full bg-[#252B42] flex items-center justify-center px-10">
             <div className="w-full max-w-[1439px] bg-[#252B42] flex items-center justify-center">
-                <div className="w-full text-white flex justify-between py-[10px] px-[38px] max-[920px]:hidden">
+                <div className="w-full text-white flex justify-between py-[10px] max-[920px]:hidden">
                     <div className="flex gap-[10px] font-bold">
                         <div className="flex gap-[5px] py-[10px] ">
                             <Image src={"/icons/phone.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
-                            <p className="max-lg:text-[14px]">(225) 555-0118</p>
+                            <p className="max-lg:text-[14px]">+92 30---------</p>
                         </div>
                         <div className="flex gap-[5px] p-[10px]">
                         <Image src={"/icons/mail.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
-                            <p className="max-lg:text-[14px]">michelle.rivera@example.com</p>
+                            <p className="max-lg:text-[14px]">abc@example.com</p>
                         </div>
                     </div>
                     <div className="font-bold flex items-center">
@@ -59,23 +61,22 @@ const header = () => {
                         </ul>
                     </div>
                 </div>
-                </div>
-                <div className="w-full max-w-[1439px] bg-[#FFFFFF] flex items-center py-[12px] px-[38px] max-md:bg-white max-md:py-[24px]">
+            </div>
+            </div>
+            <div className="w-full bg-[#FFFFFF] flex items-center justify-center py-[12px] px-[38px] max-md:bg-white max-md:py-[24px]">
                 <nav className="w-full max-w-[1439px] flex justify-between gap-28 max-md:w-full max-md:max-w-3xl max-md:px-6">
                     <div className="text-[24px] flex items-center cursor-pointer">
-                        <Link href="/"><h3 className="font-bold max-md:font-bold max-md:text-[24px]">Bandage</h3></Link>
+                        <Link href="/"><h3 className="font-bold max-md:font-bold max-md:text-[24px] text-[#737373]">Bandage</h3></Link>
                     </div>
                     <div className="w-full bg-white flex justify-between gap-[32px] max-[920px]:hidden">
                         <div className="flex items-center gap-2s">
                             <Link href="/" className="text-[#737373] font-bold text-[14px] p-[10px] cursor-pointer max-md:text-[30px] hover:text-[#23A6F0]">Home</Link>  
                             <div className="relative text-#737373] font-bold text-[14px] p-[10px] cursor-pointer"> 
-                                <div className="flex items-center justify-between gap-2">
+                                <div className="flex items-center justify-center">
                                     <Link href={"/components/shop"} className="text-[#737373] font-bold text-[14px] p-[10px] cursor-pointer max-md:text-[30px] hover:text-[#23A6F0]">Shop</Link>
                                     <button onClick={() => setDisplay((prevDisplay) => !prevDisplay)}>
-                                        <Image className="cursor-pointer" src={"/icons/arrow-down.svg"} 
-                                        alt={"icon"} 
-                                        width={"10"} 
-                                        height={"10"}/></button>
+                                        <RiArrowDownSLine className="text-[#737373] font-bold text-[24px] hover:text-[#23A6F0]"/>
+                                    </button>
                                 </div>  
                                
                                 <ul style={{ display: display ? "block" : "none" }} className="absolute bg-white py-2 -left-4 rounded">
@@ -104,15 +105,15 @@ const header = () => {
                         <div className="flex items-center gap-[20px] hover:">
                            
                             <div className="flex gap-2 text-[#23A6F0]">
-                                <FiSearch className="text-[20px]"/> 
+                                <FiSearch className="text-[20px] hover:cursor-pointer"/> 
                             </div>
                            
                             <div className="flex gap-2 text-[#23A6F0]">
-                                <BsCart className="text-[20px]"/>
+                                <BsCart className="text-[20px] hover:cursor-pointer"/>
                                 1
                             </div>
                             <div className="flex gap-2 text-[#23A6F0]">
-                                <CiHeart className="text-[24px]"/>
+                                <CiHeart className="text-[24px] hover:cursor-pointer"/>
                                 1
                             </div>
                             <div className="text-[#23A6F0] font-bold flex items-center gap-[5px]">

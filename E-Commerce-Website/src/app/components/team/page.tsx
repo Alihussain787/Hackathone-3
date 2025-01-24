@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Team = () => {
     return(
-        <div>
+        <div className="flex flex-col items-center justify-center">
             <section className="w-full max-w-[1439px] bg-[#FAFAFA]">
                 <Header />
             <div className="w-full max-w-[1439px] flex items-center justify-center">

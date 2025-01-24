@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Contact = () => {
     return(
-        <div>
+        <div className="flex flex-col items-center justify-center">
         <Header />
         <section className="container2 w-full max-w-[1439px] py-20 flex items-center justify-center">
         <div className="w-[1044px]">

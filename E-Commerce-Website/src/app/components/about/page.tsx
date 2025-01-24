@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 const AboutPage = () => {
     return(
-        <div>
+        <div className="flex flex-col items-center justify-center">
         <Header />
         <section className="w-full max-w-[1439px] flex items-center justify-center max-md:mt-[505px]">
         <div className="w-[1044px] flex justify-between max-md:flex-col">

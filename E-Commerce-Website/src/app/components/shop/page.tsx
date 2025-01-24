@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import CartManager from "../CartManager";
 
+import { RiArrowRightSLine } from "react-icons/ri";
+
 // interface ProductType {
 //             _id: string,
 //             title: string,
@@ -32,7 +34,8 @@ const productFetcher = async () => {
         tags[],
         _type,
         category,   
-    }`)
+    }
+    `)
     return products;          
 }
 
@@ -51,20 +54,15 @@ const ProductListPage = async() => {
             <Header3 />
         </div>
 
-        <section className="w-full max-w-[1439px] bg-[#FAFAFA] flex flex-col items-center justify-center px-10">
+        <section className="w-full flex flex-col items-center justify-center">
+        <div className="w-full max-w-[1439px] bg-[#FAFAFA] flex flex-col items-center justify-center px-10">
             <div className="w-full max-w-[1050px] bg-[#FAFAFA] flex items-center justify-center py-10 max-md:w-full max-md:max-w-3xl max-md:block">
                 <div className="w-full flex items-center max-md:justify-center">
                         <h1 className="text-24px text-[#252B42] font-bold">Shop</h1>
                 </div>
                 <div className="flex items-center text-[#252B42] justify-center gap-2">
                     <Link href="/" className="p-[10px] cursor-pointer text-[#252B42] font-bold">Home</Link>
-                        <div>
-                            <Image src={"/icons/arrow-right-2.svg"} 
-                                alt={"icon"} 
-                                width={"9"} 
-                                height={"16"}/>
-                        </div>
-
+                    <RiArrowRightSLine className="text-[#BDBDBD] text-[24px] font-bold"/>
                     <Link href="/components/shop/" className="p-[10px] cursor-pointer text-[#BDBDBD]">Shop</Link>
                 </div>
             </div>
@@ -106,8 +104,9 @@ const ProductListPage = async() => {
                     
                 </div>
             </div>
+        </div>
         </section>
-        <section className="w-full max-w-[1439px] flex items-center justify-center px-10">
+        <section className="w-full flex items-center justify-center px-10">
         <div className="max-w-[1050px] w-full bg-white flex items-center justify-center py-10 max-md:w-full max-md:max-w-3xl">
                 <div className="w-full max-w-[1050px] flex justify-between items-center max-md:flex-col max-md:gap-6">
                     <h6 className="text-[14px] text-[#737373] font-bold">Showing all results</h6>    
@@ -156,7 +155,7 @@ const ProductListPage = async() => {
 
         </section>
         {/* Product List */}
-        <section className="w-full max-w-[1439px] bg-white flex flex-col items-center justify-center py-10 max-md:w-full">
+        <section className="w-full bg-white flex flex-col items-center justify-center py-10 max-md:w-full">
             <div className="w-full max-w-[1050px] flex flex-col gap-10">
                 <CartManager products={products} />
                 <div className="w-full flex items-center justify-center">
@@ -176,7 +175,8 @@ const ProductListPage = async() => {
         </section> 
 
 
-        <section className="w-full max-w-[1439px] bg-[#FAFAFA] py-[50px] flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl px-10">
+        <section className="w-full flex flex-col items-center justify-center">
+            <div className="w-full max-w-[1439px] bg-[#FAFAFA] py-[50px] flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl px-10">
             <div className="w-full max-w-[1050px] flex items-center justify-between max-md:flex-col gap-10">
                 <Image src={"/icons/brand-logo-1.svg"} 
                     alt={"icon"} 
@@ -202,6 +202,7 @@ const ProductListPage = async() => {
                     alt={"icon"} 
                     width={"103"} 
                     height={"34"} className="w-full max-w-[50px]"/>
+            </div>
             </div>
         </section>
         <Footer />

@@ -5,7 +5,7 @@ import { FaTwitter } from "react-icons/fa";
 
 const footer = () => {
     return(
-        <div>
+        <div className="w-full flex flex-col justify-center items-center">
             <footer className="w-full max-w-[1439px] bg-white flex items-center justify-center mt-[80px] max-md:w-full ">
                 <div className="w-full flex flex-col gap-[80px] max-md:w-full max-md:justify-start">
                     <div className="w-full bg-[#FAFAFA] flex items-center justify-center py-10 max-md:w-full max-md:flex-col px-10">

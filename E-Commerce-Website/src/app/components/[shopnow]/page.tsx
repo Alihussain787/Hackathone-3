@@ -1,11 +1,11 @@
-// "use client"
 import {client} from "../../../sanity/lib/client";
 import Header from "../header2/page";
 import Header3 from "../header3/page"
 import Footer from "../footer2/page";
 import Image from "next/image";
 import Link from "next/link";
-// import { useEffect, useState } from "react";
+
+import { RiArrowRightSLine } from "react-icons/ri";
 
 interface ProductType 
     {
@@ -23,12 +23,10 @@ interface ProductType
 
     const ShopNowPage = async ({ params }: { params: { shopnow: string } }) => {
       const { shopnow } = params;
-    
-      // Agar `shopnow` parameter available nahi hai
+
       if (!shopnow) {
-        return <p>Error: Koi "shopnow" parameter nahi mila!</p>;
+        return <p>Error: "shopnow" parameter not found!</p>;
       }
-    console.log(shopnow);
 
     const response = await client.fetch(`*[_type == "product"][_id == "${shopnow}"]
         {
@@ -43,9 +41,8 @@ interface ProductType
           category,   
         }
       `);
-    const data:ProductType[] = await response;
-    console.log("data",data);
 
+    const data:ProductType[] = await response;
 
     return(
         <div>
@@ -59,13 +56,8 @@ interface ProductType
             <div className="w-full max-w-[1439px] bg-[#FAFAFA] flex items-center justify-center py-10 max-md:w-full max-md:max-w-3xl px-10">
                 <div className="w-full max-w-[1050px] flex items-center justify-start gap-2 max-md:justify-center">
                     <Link href="/" className="p-[10px] cursor-pointer">Home</Link>
-                        <span>
-                            <Image src={"/icons/arrow-right-2.svg"} 
-                                alt={"icon"} 
-                                width={"9"} 
-                                height={"16"}/>
-                        </span>
-                    <Link href="/about/" className="p-[10px] cursor-pointer text-[#BDBDBD]">Shopnow</Link>
+                    <RiArrowRightSLine className="text-[#BDBDBD] text-[24px] font-bold"/>
+                    <Link href="#" className="p-[10px] cursor-pointer text-[#BDBDBD]">Shopnow</Link>
                 </div>
             </div>
 
