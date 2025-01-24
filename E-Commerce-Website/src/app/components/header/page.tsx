@@ -29,14 +29,14 @@ const header = () => {
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
-                            <p className="max-lg:text-[14px]">+92 30---------</p>
+                            <p className="max-lg:text-[14px]">+92 3122963060</p>
                         </div>
                         <div className="flex gap-[5px] p-[10px]">
                         <Image src={"/icons/mail.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
-                            <p className="max-lg:text-[14px]">abc@example.com</p>
+                            <p className="max-lg:text-[14px]">alihussainsoomro93@gmail.com</p>
                         </div>
                     </div>
                     <div className="font-bold flex items-center">
