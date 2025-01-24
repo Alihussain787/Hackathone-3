@@ -108,7 +108,7 @@ const colthsPage = async() => {
             </div>
             </section>
             {/* Product List */}
-            <section className="w-full bg-white flex flex-col items-center justify-center py-10 max-md:w-full">
+            <section className="w-full bg-white flex flex-col items-center justify-center py-10 max-md:w-full px-10">
                 <div className="w-full max-w-[1050px] flex flex-col gap-10">
                     <ProductManager productList={products} />
                     <div className="w-full flex items-center justify-center">
