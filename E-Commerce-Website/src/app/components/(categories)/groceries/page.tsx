@@ -6,7 +6,7 @@ import Header3 from "../../header3/page"
 import Footer from "../../footer2/page";
 import Image from "next/image";
 import Link from "next/link";
-import CartManager from "../../CartManager";
+import ProductManager from "../../ProductManager";
 
 import { RiArrowRightSLine } from "react-icons/ri";
 
@@ -108,58 +108,10 @@ const colthsPage = async() => {
                 </div>
             </div>
             </section>
-            <section className="w-full flex items-center justify-center px-10">
-            <div className="max-w-[1050px] w-full bg-white flex items-center justify-center py-10 max-md:w-full max-md:max-w-3xl">
-                    <div className="w-full max-w-[1050px] flex justify-between items-center max-md:flex-col max-md:gap-6">
-                        <h6 className="text-[14px] text-[#737373] font-bold">Showing all results</h6>    
-                        <div className="flex items-center jusity-center gap-2">
-                            <h6 className="text-[14px] text-[#737373] font-bold">Views: </h6>
-                            <div className="p-[10px] rounded border border-[#ECECEC]">
-                                <Image src={"/icons/icon-1.svg"} 
-                                    alt={"icon"} 
-                                    width={"16"} 
-                                    height={"16"}/>
-                            </div>
-                            <div className="p-[11px] rounded border border-[#ECECEC]">
-                                <Image src={"/icons/icon-2.svg"} 
-                                    alt={"icon"} 
-                                    width={"16"} 
-                                    height={"16"}/>
-                            </div>
-                        </div>
-                        {/* <div className="flex gap-2">
-                        <div>
-                            <select onChange={(e) => {fetchData(e.target.value)}} className="cursor-pointer flex items-center justify-center gap-2 border w-[141px] h-[50px] text-[#737373] outline-0">
-                                <option value="all">All</option>
-                                <option value="cloths">Cloths</option>
-                                <option value="electronics">Electronics</option>
-                                <option value="groceries">Groceries</option>
-                                <option value="household">Household Items</option>
-                            </select>
-                        </div>
-                        <button className="bg-[#23A6F0] w-[94px] h-[50px] text-white">Filter</button>
-                        </div> */}
-    
-                        <div className="flex gap-2">
-                            <div>
-                                <select className="cursor-pointer flex items-center justify-center gap-2 border w-[141px] h-[50px] text-[#737373] outline-0">
-                                    <option value="all">All</option>
-                                    <option value="cloths">Cloths</option>
-                                    <option value="electronics">Electronics</option>
-                                    <option value="groceries">Groceries</option>
-                                    <option value="household">Household Items</option>
-                                </select>
-                            </div>
-                                <button className="bg-[#23A6F0] w-[94px] h-[50px] text-white">Filter</button>
-                            </div>
-                        </div>
-                </div>
-    
-            </section>
             {/* Product List */}
             <section className="w-full bg-white flex flex-col items-center justify-center py-10 max-md:w-full">
                 <div className="w-full max-w-[1050px] flex flex-col gap-10">
-                    <CartManager products={products} />
+                <ProductManager productList={products} />
                     <div className="w-full flex items-center justify-center">
                         <div className="border border-[#BDBDBD] rounded w-[313px] h-[50px] flex">
                             <div className="cursor-pointer border-r w-1/4 h-full flex items-center justify-center bg-[#F3F3F3] text-[#BDBDBD] font-bold">

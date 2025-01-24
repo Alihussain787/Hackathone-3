@@ -66,7 +66,7 @@ const CartManager = ({products}:{products:ProductType[]}) => {
                 })
                 }
                 <button onClick={() => setShowForm(true)} className="w-full bg-[#23A6F0] hover:bg-blue-500 text-white py-2 text-sm text-center">Check Out</button>
-              </div>
+            </div>
 
 
         {showForm &&
