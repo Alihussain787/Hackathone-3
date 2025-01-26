@@ -159,7 +159,7 @@ export default async function Home(){
         </section>
         
         <section className="w-full bg-white flex flex-col items-center justify-center">
-        <div className="w-full max-w-[1439 flex flex-col items-center justify-center py-10 max-md:w-full">
+        <div className="w-full max-w-[1439 flex flex-col items-center justify-center py-10 max-md:w-full px-10">
             <div className="w-full max-w-[1050px] flex flex-col gap-10">
                  <div className="w-full flex flex-col items-center justify-center max-md:px-6 max-md:text-center">
                     <p className="text-[20px] text-[#737373]">Featured Products</p>
