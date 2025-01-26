@@ -4,7 +4,7 @@ import Header3 from "./components/header3/page";
 import Footer from "./components/footer/page";
 import Image from "next/image";
 import Link from "next/link";
-import CartManager from "./components/CartManager";
+import ProductManager from "./components/ProductManager";
 // import { productFetcher } from "./api/product/products";
 
 // interface ProductType {
@@ -166,7 +166,7 @@ export default async function Home(){
                     <h1 className="text-[24px] text-[#252B42] font-bold">BESTSELLER PRODUCTS</h1>
                     <p className="text-[14px] text-[#737373]">Problems trying to resolve the conflict between </p>
                  </div>
-                <CartManager products={products} />
+                 <ProductManager productList={products} />
             </div>
         </div>
         </section> 

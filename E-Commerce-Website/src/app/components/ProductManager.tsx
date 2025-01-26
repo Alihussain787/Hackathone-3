@@ -16,19 +16,19 @@ interface Product {
   category: string;
 }
 
-// interface CartItem extends Product {
-//   quantity: number;
-// }
+interface CartItem extends Product {
+  quantity: number;
+}
 
 const ProductManager = ({ productList }: { productList: Product[] }) => {
-
-  const products:Product[] = productList;
+  const products: Product[] = productList;
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(productList);
   const [search, setSearch] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
-  const [cart, setCart] = useState<Product[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
   const [showForm, setShowForm] = useState(false);
+  const [notification, setNotification] = useState<string | null>(null);
 
   // Filter products based on search, min price, and max price
   const handleFilter = () => {
@@ -51,85 +51,143 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
 
   // Add to Cart functionality
   const addToCart = (product: Product) => {
-
-    setCart((prevProduct)=>[...prevProduct, product])
-
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item._id === product._id);
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item._id === product._id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prevCart, { ...product, quantity: 1 }];
+    });
+    setNotification('Product added to cart');
+    setTimeout(() => setNotification(null), 2000);
   };
 
   // Remove added product from the cart
-  const handleRemoveFromCart = (product_id:string) => 
-    {
-        const newData = cart.filter((item)=>
-        {
-            return item._id != product_id
-        })
-        setCart(newData)
-    }
+  const handleRemoveFromCart = (productId: string) => {
+    setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
+  };
 
+  // Increase Quantity
+  const increaseQuantity = (productId: string) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item._id === productId ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  // Decrease Quantity
+  const decreaseQuantity = (productId: string) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item._id === productId && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  };
 
   // Render Cart Items
   const renderCartItems = () => (
-    <div className="w-full rounded">
-    <div className="border-b bg-[#23A6F0] flex justify-between p-2">
+    <div className="w-full bg-white rounded">
+      <div className="border-b bg-[#23A6F0] text-white flex justify-between p-2">
         <h3 className="w-1/4 text-center">Product Name</h3>
         <h3 className="w-1/4 text-center">Price</h3>
         <h3 className="w-1/4 text-center">Quantity</h3>
         <h3 className="w-1/4 text-center">Action</h3>
-    </div>
+      </div>
       {cart.length > 0 ? (
         cart.map((item) => (
           <div key={item._id} className="border-b text-black flex items-center justify-between p-2 rounded">
             <p className="w-1/4 text-center">{item.title}</p>
-            <p className="w-1/4 text-center">${item.price}</p>
-            <p className="w-1/4 text-center"><span>1</span></p>
+            <p className="w-1/4 text-center">${item.price * item.quantity}</p>
+            <p className="w-1/4 flex items-center justify-center gap-2">
+              <button
+                onClick={() => decreaseQuantity(item._id)}
+                className="px-2 bg-gray-300 rounded"
+              >
+                -
+              </button>
+              <span>{item.quantity}</span>
+              <button
+                onClick={() => increaseQuantity(item._id)}
+                className="px-2 bg-gray-300 rounded"
+              >
+                +
+              </button>
+            </p>
             <p className="w-1/4 text-center">
-              <button onClick={() => handleRemoveFromCart(item._id)} className="text-white p-[5px] rounded bg-red-500">Remove</button>
+              <button
+                onClick={() => handleRemoveFromCart(item._id)}
+                className="text-white p-[5px] rounded bg-red-500"
+              >
+                Remove
+              </button>
             </p>
           </div>
         ))
       ) : (
         <p>Your cart is empty.</p>
       )}
-      <button onClick={() => setShowForm(true)} className="w-full bg-[#23A6F0] hover:bg-blue-500 text-white py-2 text-sm text-center">Check Out</button>
-      {showForm &&
-            <div className="w-full border flex flex-col gap-2 py-4 px-2">
-                <h1>Customer Information</h1>
-                <div>
-                    <label>Name</label>
-                    <br />
-                    <input type="text" required className="border w-full p-2 outline-0"/>
-                </div>
-                <div>
-                    <label>Email</label>
-                    <br />
-                    <input type="email" required className="border w-full p-2 outline-0"/>
-                </div>
-                <div>
-                    <label>Phone</label>
-                    <br />
-                    <input type="number" required className="border w-full p-2 outline-0"/>
-                </div>
-                <button className="w-full bg-[#23A6F0] hover:bg-blue-500 text-white py-2 text-sm text-center">Submit Order</button>
-            </div>
-        }
+      <button
+        onClick={() => setShowForm(true)}
+        className="w-full bg-[#23A6F0] hover:bg-blue-500 text-white py-2 text-sm text-center"
+      >
+        Check Out
+      </button>
+      {showForm && (
+        <div className="w-full border flex flex-col gap-2 py-4 px-2">
+          <h1>Customer Information</h1>
+          <div>
+            <label>Name</label>
+            <br />
+            <input type="text" required className="border w-full p-2 outline-0" />
+          </div>
+          <div>
+            <label>Email</label>
+            <br />
+            <input type="email" required className="border w-full p-2 outline-0" />
+          </div>
+          <div>
+            <label>Phone</label>
+            <br />
+            <input type="number" required className="border w-full p-2 outline-0" />
+          </div>
+          <button className="w-full bg-[#23A6F0] hover:bg-blue-500 text-white py-2 text-sm text-center">
+            Submit Order
+          </button>
+        </div>
+      )}
     </div>
   );
 
   return (
     <div>
+      {/* Notification */}
+      {notification && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white py-2 px-4 rounded">
+          {notification}
+        </div>
+      )}
+
       <div className="w-full flex items-center justify-center">
-        <div className="w-full max-w-[1050px] bg-white flex items-center justify-center pb-10 max-md:w-full max-md:max-w-3xl">
+        <div className="w-full max-w-[1050px] bg-white flex flex-col items-center justify-center gap-2 pb-10 max-md:w-full max-md:max-w-3xl">
+          <div className="w-full">
+            <input
+              type="text"
+              placeholder="Search products"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full p-2 border rounded outline-0"
+            />
+          </div>
           <div className="w-full flex justify-between items-center max-lg:flex-col gap-6">
             <h6 className="text-[14px] text-[#737373] font-bold">Showing {filteredProducts.length} results</h6>
-            {/* Filters */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-              <input
-                type="text"
-                placeholder="Search by title"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full p-2 border rounded outline-0"
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <input
                 type="number"
                 placeholder="Min Price"
@@ -145,7 +203,7 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
                 className="w-full p-2 border rounded outline-0"
               />
             </div>
-            <button className="bg-[#23A6F0] w-[94px] h-[50px] text-white">Filter</button>   
+            <button className="bg-[#23A6F0] w-[94px] p-2 text-white">Filter</button>
           </div>
         </div>
       </div>
@@ -186,7 +244,7 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
                   href={`/components/${product._id}`}
                   className="w-full bg-[#23A6F0] hover:bg-blue-500 text-white py-2 rounded text-sm text-center"
                 >
-                  Explore
+                  Details
                 </Link>
               </div>
             </div>
@@ -195,10 +253,7 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
           <p>No products match your criteria.</p>
         )}
       </div>
-      <div className="mt-6">
-        {/* Render Cart */}
-        {renderCartItems()}
-      </div>
+      <div className="mt-6">{renderCartItems()}</div>
     </div>
   );
 };

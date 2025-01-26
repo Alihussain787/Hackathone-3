@@ -36,7 +36,7 @@ const header = () => {
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
-                            <p className="max-lg:text-[14px]">alihussainsoomro93@gmail.com</p>
+                            <p className="max-lg:text-[14px]">alihussain78793@gmail.com</p>
                         </div>
                     </div>
                     <div className="font-bold flex items-center">
@@ -69,7 +69,7 @@ const header = () => {
                         <Link href="/"><h3 className="font-bold max-md:font-bold max-md:text-[24px] text-[#737373]">Bandage</h3></Link>
                     </div>
                     <div className="w-full bg-white flex justify-between gap-[32px] max-[920px]:hidden">
-                        <div className="flex items-center gap-2s">
+                        <div className="flex items-center gap-2">
                             <Link href="/" className="text-[#737373] font-bold text-[14px] p-[10px] cursor-pointer max-md:text-[30px] hover:text-[#23A6F0]">Home</Link>  
                             <div className="relative text-#737373] font-bold text-[14px] p-[10px] cursor-pointer"> 
                                 <div className="flex items-center justify-center">
@@ -103,19 +103,6 @@ const header = () => {
                             <Link href="/components/pages/" className="text-[#737373] font-bold text-[14px] p-[10px] cursor-pointer max-md:text-[30px] hover:text-[#23A6F0]">Pages</Link>
                         </div>
                         <div className="flex items-center gap-[20px] hover:">
-                           
-                            <div className="flex gap-2 text-[#23A6F0]">
-                                <FiSearch className="text-[20px] hover:cursor-pointer"/> 
-                            </div>
-                           
-                            <div className="flex gap-2 text-[#23A6F0]">
-                                <BsCart className="text-[20px] hover:cursor-pointer"/>
-                                1
-                            </div>
-                            <div className="flex gap-2 text-[#23A6F0]">
-                                <CiHeart className="text-[24px] hover:cursor-pointer"/>
-                                1
-                            </div>
                             <div className="text-[#23A6F0] font-bold flex items-center gap-[5px]">
                                 <FaRegUser className="text-[20px]"/>
                                 <Link href={"#"}>Login / Register</Link>

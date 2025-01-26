@@ -101,36 +101,8 @@ const header2 = () => {
                             <Link href="/components/team/" className="text-[#737373] font-bold text-[14px] p-[10px] cursor-pointer max-md:text-[30px] hover:text-[#23A6F0]">Blog</Link>
                             <Link href="/components/contact/" className="text-[#737373] font-bold text-[14px] p-[10px] cursor-pointer max-md:text-[30px] hover:text-[#23A6F0]">Contact</Link>
                             <Link href="/components/pages/" className="text-[#737373] font-bold text-[14px] p-[10px] cursor-pointer max-md:text-[30px] hover:text-[#23A6F0]">Pages</Link>
-                        <div className="flex flex-col items-center gap-[20px] md:hidden">
-                            <div className="text-[#23A6F0] font-bold flex items-center gap-[5px]">
-                                <FaRegUser />
-                                <Link href={"#"}>Login / Register</Link>
-                           </div>
-                                <FiSearch />
-
-                            <div className="flex gap-2 text-[#23A6F0]">
-                                 <BsCart />
-                                1
-                            </div>
-                            <div className="flex gap-2 text-[#23A6F0]">
-                                <CiHeart/>
-                                1
-                            </div>
-                        </div>
                         </div>
                         <div className="flex items-center gap-[20px] max-md:hidden">
-        
-                            <div className="flex gap-2 text-[#23A6F0]">
-                                <FiSearch className="hover:cursor-pointer text-[20px]"/>
-                            </div>
-                            <div className="flex gap-2 text-[#23A6F0]">
-                                 <BsCart className="hover:cursor-pointer text-[20px]"/>
-                                1
-                            </div>
-                            <div className="flex gap-2 text-[#23A6F0]">
-                               <CiHeart className="hover:cursor-pointer text-[24px]"/>
-                                1
-                            </div>
                             <div className="text-[#23A6F0] font-bold flex items-center gap-[5px]">
                                 <FaRegUser className="hover:cursor-pointer text-[18px]"/>
                                 <Link href={"#"}>Login / Register</Link>
