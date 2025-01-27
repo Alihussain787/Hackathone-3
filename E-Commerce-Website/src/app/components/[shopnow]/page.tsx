@@ -23,7 +23,6 @@ interface ProductType
 
     const ShopNowPage = async ({ params }: { params: { shopnow: string } }) => {
       const { shopnow } = params;
-
       if (!shopnow) {
         return <p>Error: "shopnow" parameter not found!</p>;
       }
