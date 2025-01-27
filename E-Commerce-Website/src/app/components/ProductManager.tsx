@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import CheckOut from '@/actions/CheckOut';
 
 interface Product {
   _id: string;
@@ -29,8 +30,17 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
+  const [customerInfo, setCustomerInfo] = useState({
+    name: '',
+    email: '',
+    phone: ''
+  });
 
-  // Filter products based on search, min price, and max price
+  const handleInput = (e: any) => {
+    const { name, value } = e.target;
+    setCustomerInfo({ ...customerInfo, [name]: value });
+  };
+
   const handleFilter = () => {
     const min = parseFloat(minPrice) || 0;
     const max = parseFloat(maxPrice) || Infinity;
@@ -38,7 +48,6 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
     const filtered = products.filter((product) => {
       const matchesSearch = product.title.toLowerCase().includes(search.toLowerCase());
       const matchesPrice = product.price >= min && product.price <= max;
-
       return matchesSearch && matchesPrice;
     });
 
@@ -49,7 +58,6 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
     handleFilter();
   }, [search, minPrice, maxPrice]);
 
-  // Add to Cart functionality
   const addToCart = (product: Product) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item._id === product._id);
@@ -66,12 +74,10 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
     setTimeout(() => setNotification(null), 2000);
   };
 
-  // Remove added product from the cart
   const handleRemoveFromCart = (productId: string) => {
     setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
   };
 
-  // Increase Quantity
   const increaseQuantity = (productId: string) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -80,7 +86,6 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
     );
   };
 
-  // Decrease Quantity
   const decreaseQuantity = (productId: string) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -91,7 +96,35 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
     );
   };
 
-  // Render Cart Items
+  // const handleCheckout = () => {
+  //   CheckOut(cart, customerInfo);
+  //   setNotification('Congratulations! Your order has been successfully submitted.');
+  //   setCart([]);
+  //   setCustomerInfo({ name: '', email: '', phone: '' });
+  //   setShowForm(false);
+  //   setTimeout(() => setNotification(null), 5000);
+  // };
+
+  const handleCheckout = async () => {
+    try {
+      const response = await CheckOut(cart, customerInfo);
+  
+      if (response.success) {
+        setNotification("Congratulations! Your order has been successfully submitted.");
+        setCart([]);
+        setCustomerInfo({ name: "", email: "", phone: "" });
+        setShowForm(false);
+      } else {
+        setNotification("An error occurred during checkout. Please try again.");
+      }
+    } catch (error) {
+      console.error("Checkout error:", error);
+      setNotification("An unexpected error occurred. Please try again later.");
+    }
+  
+    setTimeout(() => setNotification(null), 5000);
+  };
+
   const renderCartItems = () => (
     <div className="w-full bg-white rounded">
       <div className="border-b bg-[#23A6F0] text-white flex justify-between p-2">
@@ -145,19 +178,43 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
           <div>
             <label>Name</label>
             <br />
-            <input type="text" required className="border w-full p-2 outline-0" />
+            <input
+              type="text"
+              name="name"
+              value={customerInfo.name}
+              onChange={handleInput}
+              required
+              className="border w-full p-2 outline-0"
+            />
           </div>
           <div>
             <label>Email</label>
             <br />
-            <input type="email" required className="border w-full p-2 outline-0" />
+            <input
+              type="email"
+              name="email"
+              value={customerInfo.email}
+              onChange={handleInput}
+              required
+              className="border w-full p-2 outline-0"
+            />
           </div>
           <div>
             <label>Phone</label>
             <br />
-            <input type="number" required className="border w-full p-2 outline-0" />
+            <input
+              type="number"
+              name="phone"
+              value={customerInfo.phone}
+              onChange={handleInput}
+              required
+              className="border w-full p-2 outline-0"
+            />
           </div>
-          <button className="w-full bg-[#23A6F0] hover:bg-blue-500 text-white py-2 text-sm text-center">
+          <button
+            onClick={handleCheckout}
+            className="w-full bg-[#23A6F0] hover:bg-blue-500 text-white py-2 text-sm text-center"
+          >
             Submit Order
           </button>
         </div>
@@ -167,7 +224,6 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
 
   return (
     <div>
-      {/* Notification */}
       {notification && (
         <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white py-2 px-4 rounded">
           {notification}
@@ -208,7 +264,6 @@ const ProductManager = ({ productList }: { productList: Product[] }) => {
         </div>
       </div>
 
-      {/* Product List */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
