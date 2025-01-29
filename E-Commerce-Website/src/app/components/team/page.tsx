@@ -32,25 +32,25 @@ const Team = () => {
         <section className="w-full max-w-[1439px] bg-white py-10 flex flex-col items-center justify-center max-md:w-full max-md:max-w-3xl">
             <div className="w-full flex items-center justify-center gap-[10px] max-md:flex-col">
                 <div>
-                    <Image src={"image/gallery-img1.svg"} 
+                    <Image src={"/image/gallery-img1.svg"} 
                         alt={"image"} 
                         width={"700"} 
                         height={"530"}/>
                 </div>
                 <div className="team-gallery">
-                    <Image src={"image/gallery-img2.svg"} 
+                    <Image src={"/image/gallery-img2.svg"} 
                         alt={"image"} 
                         width={"361"} 
                         height={"260"}/>
-                    <Image src={"image/gallery-img3.svg"} 
+                    <Image src={"/image/gallery-img3.svg"} 
                         alt={"image"} 
                         width={"361"} 
                         height={"260"}/>
-                    <Image src={"image/gallery-img4.svg"} 
+                    <Image src={"/image/gallery-img4.svg"} 
                         alt={"image"} 
                         width={"361"} 
                         height={"260"}/>
-                    <Image src={"image/gallery-img5.svg"} 
+                    <Image src={"/image/gallery-img5.svg"} 
                         alt={"image"} 
                         width={"361"} 
                         height={"260"}/>
@@ -65,7 +65,7 @@ const Team = () => {
                 </div>
                 <div className="team-container">
                     <div className="flex flex-col gap-4 items-center pb-20">
-                        <Image src={"image/team1.svg"} 
+                        <Image src={"/image/team1.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -79,7 +79,7 @@ const Team = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image src={"icons/ins.svg"} 
+                                <Image src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -93,7 +93,7 @@ const Team = () => {
                         </ul>
                     </div>     
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/team2.svg"} 
+                        <Image src={"/image/team2.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -107,7 +107,7 @@ const Team = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image src={"icons/ins.svg"} 
+                                <Image src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -121,7 +121,7 @@ const Team = () => {
                         </ul>
                     </div>    
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/team3.svg"} 
+                        <Image src={"/image/team3.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -135,7 +135,7 @@ const Team = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image src={"icons/ins.svg"} 
+                                <Image src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -149,7 +149,7 @@ const Team = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/team4.svg"} 
+                        <Image src={"/image/team4.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -163,7 +163,7 @@ const Team = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image src={"icons/ins.svg"} 
+                                <Image src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -177,7 +177,7 @@ const Team = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/team5.svg"} 
+                        <Image src={"/image/team5.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -191,7 +191,7 @@ const Team = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image src={"icons/ins.svg"} 
+                                <Image src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -205,7 +205,7 @@ const Team = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/team6.svg"} 
+                        <Image src={"/image/team6.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -219,7 +219,7 @@ const Team = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image src={"icons/ins.svg"} 
+                                <Image src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -233,7 +233,7 @@ const Team = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/team7.svg"} 
+                        <Image src={"/image/team7.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -247,7 +247,7 @@ const Team = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image src={"icons/ins.svg"} 
+                                <Image src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -261,7 +261,7 @@ const Team = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/team8.svg"} 
+                        <Image src={"/image/team8.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -275,7 +275,7 @@ const Team = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image src={"icons/ins.svg"} 
+                                <Image src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -289,7 +289,7 @@ const Team = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/team9.svg"} 
+                        <Image src={"/image/team9.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -303,7 +303,7 @@ const Team = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image src={"icons/ins.svg"} 
+                                <Image src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -337,7 +337,7 @@ const Team = () => {
                                 height={"24"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image className=""src={"icons/fb2.svg"} 
+                                <Image className=""src={"/icons/fb2.svg"} 
                                 alt={"icon"} 
                                 width={"30"} 
                                 height={"24"}/>

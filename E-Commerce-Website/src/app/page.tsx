@@ -53,7 +53,7 @@ export default async function Home(){
             <Header3 />
         </div>
 
-        <section className="w-full flex items-center justify-center bg-cyan-550">
+    <section className="w-full flex items-center justify-center bg-cyan-550">
         <div id="backImg" className="w-full max-w-[1439px] h-[716px] flex items-center justify-center max-md:w-full max-md:flex-col px-10">
             <div className="text-white w-[1044px] h-[651px] flex flex-col gap-[35px] justify-center max-md:px-6 max-md:w-full max-md:py-[100px] max-md:gap-[24px] max-md:items-center">
                 <div className="w-[580px] flex flex-col gap-[35px] max-md:w-full max-md:max-w-3xl max-md:gap-[24px] max-md:text-center">
@@ -65,9 +65,9 @@ export default async function Home(){
                 <button className="w-[221px] h-[62px] bg-[#2DC071] text-white font-bold text-[24px] rounded-[5px]">Shop Now</button>
             </div>
         </div>
-        </section>
+    </section>
 
-        <section className="w-full flex flex-col items-center justify-center">
+    <section className="w-full flex flex-col items-center justify-center">
         <div className="w-full bg-[#FAFAFA] max-w-[1439px] flex flex-col items-center justify-center gap-[64px] py-[64px] max-md:w-full px-6">
             <div className="w-full max-w-[1050px] flex flex-col gap-10">
                 <div className="w-full flex flex-col items-center justify-center max-md:text-center">
@@ -156,9 +156,9 @@ export default async function Home(){
                 </div>
             </div>
         </div>
-        </section>
+    </section>
         
-        <section className="w-full bg-white flex flex-col items-center justify-center">
+    <section className="w-full bg-white flex flex-col items-center justify-center">
         <div className="w-full max-w-[1439 flex flex-col items-center justify-center py-10 max-md:w-full px-10">
             <div className="w-full max-w-[1050px] flex flex-col gap-10">
                  <div className="w-full flex flex-col items-center justify-center max-md:px-6 max-md:text-center">
@@ -169,9 +169,9 @@ export default async function Home(){
                  <ProductManager productList={products} />
             </div>
         </div>
-        </section> 
+    </section> 
 
-        <section className="w-full flex items-center justify-center">
+    <section className="w-full flex items-center justify-center">
         <div className="w-full bg-[#23856D] pt-20 max-w-[1439px] px-10 flex items-center justify-center max-md:w-full max-md:px-0 max-md:flex-col">
         <div className="w-full max-w-[1050px] flex items-center justify-center max-md:w-full max-md:px-0 max-md:flex-col">
             <div className="text-white w-1/2 flex flex-col gap-[35px] justify-center max-md:w-full max-md:items-center max-md:justify-center">
@@ -186,20 +186,20 @@ export default async function Home(){
                 </div>
             </div>
             <div className="w-1/2 h-full flex items-end justify-end max-md:mt-10">
-                <Image src={"image/hero-3.svg"} 
+                <Image src={"/image/hero-3.svg"} 
                     alt={"image"} 
                     width={"443"} 
                     height={"685"}/>
             </div>
         </div>
         </div>
-        </section>
+    </section>
 
         <section className="w-full flex flex-col items-center justify-center ">
             <div className="border w-full max-w-[1439px] pt-20 px-[100px] flex items-center justify-center max-md:w-full max-md:flex-col">
             
             <div className="w-full">
-                <Image src={"image/hero-4.svg"} 
+                <Image src={"/image/hero-4.svg"} 
                     alt={"image"} 
                     width={"632"} 
                     height={"491"}/>
@@ -230,7 +230,7 @@ export default async function Home(){
                 </div>
                 <div className="w-full grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                     <div className="flex flex-col w-full gap-4 border border-b-[3px]">
-                        <Image src={"image/fp-img-1.svg"} 
+                        <Image src={"/image/fp-img-1.svg"} 
                             alt={"image"} 
                             width={"348"} 
                             height={"300"} className="w-full"/>
@@ -254,7 +254,7 @@ export default async function Home(){
                                     22 April 2021
                                 </p>
                                 <p className="text-[12px] text-[#737373] flex gap-2">
-                                    <Image src={"icons/comments-icon.svg"} 
+                                    <Image src={"/icons/comments-icon.svg"} 
                                         alt={"image"} 
                                         width={"13"} 
                                         height={"13"}/>
@@ -264,7 +264,7 @@ export default async function Home(){
                             </div>
                             <div className="flex gap-2 text-[#737373]">
                                 <Link href="">Learn More</Link>
-                                <Image src={"icons/arrow-right.svg"} 
+                                <Image src={"/icons/arrow-right.svg"} 
                                         alt={"image"} 
                                         width={"9"} 
                                         height={"16"}/>
@@ -272,7 +272,7 @@ export default async function Home(){
                         </div>
                     </div>
                     <div className="flex flex-col w-full gap-4 border border-b-[3px]">
-                        <Image src={"image/fp-img-2.svg"} 
+                        <Image src={"/image/fp-img-2.svg"} 
                             alt={"image"} 
                             width={"348"} 
                             height={"300"} className="w-full"/>
@@ -288,7 +288,7 @@ export default async function Home(){
                                 keystroke away.</p>
                             <div className="flex justify-between">
                                 <p className="text-[12px] text-[#737373] flex gap-2">
-                                    <Image src={"icons/clock.svg"} 
+                                    <Image src={"/icons/clock.svg"} 
                                         alt={"image"} 
                                         width={"13"} 
                                         height={"13"}/>
@@ -296,7 +296,7 @@ export default async function Home(){
                                     22 April 2021
                                 </p>
                                 <p className="text-[12px] text-[#737373] flex gap-2">
-                                    <Image src={"icons/comments-icon.svg"} 
+                                    <Image src={"/icons/comments-icon.svg"} 
                                         alt={"image"} 
                                         width={"13"} 
                                         height={"13"}/>
@@ -306,7 +306,7 @@ export default async function Home(){
                             </div>
                             <div className="flex gap-2 text-[#737373]">
                                 <Link href="">Learn More</Link>
-                                <Image src={"icons/arrow-right.svg"} 
+                                <Image src={"/icons/arrow-right.svg"} 
                                         alt={"image"} 
                                         width={"9"} 
                                         height={"16"}/>
@@ -314,7 +314,7 @@ export default async function Home(){
                         </div>
                     </div>
                     <div className="flex flex-col w-full gap-4 border border-b-[3px]">
-                        <Image src={"image/fp-img-3.svg"} 
+                        <Image src={"/image/fp-img-3.svg"} 
                             alt={"image"} 
                             width={"348"} 
                             height={"300"} className="w-full"/>
@@ -330,7 +330,7 @@ export default async function Home(){
                                 keystroke away.</p>
                             <div className="flex justify-between">
                                 <p className="text-[12px] text-[#737373] flex gap-2">
-                                    <Image src={"icons/clock.svg"} 
+                                    <Image src={"/icons/clock.svg"} 
                                         alt={"image"} 
                                         width={"13"} 
                                         height={"13"}/>
@@ -338,7 +338,7 @@ export default async function Home(){
                                     22 April 2021
                                 </p>
                                 <p className="text-[12px] text-[#737373] flex gap-2">
-                                    <Image src={"icons/comments-icon.svg"} 
+                                    <Image src={"/icons/comments-icon.svg"} 
                                         alt={"image"} 
                                         width={"13"} 
                                         height={"13"}/>
@@ -348,7 +348,7 @@ export default async function Home(){
                             </div>
                             <div className="flex gap-2 text-[#737373]">
                                 <Link href="">Learn More</Link>
-                                <Image src={"icons/arrow-right.svg"} 
+                                <Image src={"/icons/arrow-right.svg"} 
                                         alt={"image"} 
                                         width={"9"} 
                                         height={"16"}/>

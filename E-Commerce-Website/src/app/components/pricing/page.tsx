@@ -258,7 +258,7 @@ const Pricing = () => {
                                 height={"24"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image className=""src={"icons/fb2.svg"} 
+                                <Image className=""src={"/icons/fb2.svg"} 
                                 alt={"icon"} 
                                 width={"30"} 
                                 height={"24"}/>

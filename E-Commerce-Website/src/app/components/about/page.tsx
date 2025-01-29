@@ -20,7 +20,7 @@ const AboutPage = () => {
             </div>
 
             <div className="flex items-center justify-center">
-                <Image src={"image/about-img.svg"} 
+                <Image src={"/image/about-img.svg"} 
                     alt={"image"} 
                         width={"387"} 
                         height={"440"}/>
@@ -64,7 +64,7 @@ const AboutPage = () => {
                 </div>
                 <div className="flex gap-4 max-md:flex-col">
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/media.svg"} 
+                        <Image src={"/image/media.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -78,7 +78,7 @@ const AboutPage = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image className="rounded-tl-[25%] rounded-br-[25%]"src={"icons/ins.svg"} 
+                                <Image className="rounded-tl-[25%] rounded-br-[25%]"src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -92,7 +92,7 @@ const AboutPage = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/media2.svg"} 
+                        <Image src={"/image/media2.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -106,7 +106,7 @@ const AboutPage = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image className="rounded-tl-[25%] rounded-br-[25%]"src={"icons/ins.svg"} 
+                                <Image className="rounded-tl-[25%] rounded-br-[25%]"src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -120,7 +120,7 @@ const AboutPage = () => {
                         </ul>
                     </div>    
                     <div className="flex flex-col gap-4 items-center">
-                        <Image src={"image/media3.svg"} 
+                        <Image src={"/image/media3.svg"} 
                             alt={"image"} 
                             width={"316"} 
                             height={"231"}/>
@@ -134,7 +134,7 @@ const AboutPage = () => {
                                 height={"16"}/>
                             </li>
                             <li className="cursor-pointer">
-                                <Image className="rounded-tl-[25%] rounded-br-[25%]"src={"icons/ins.svg"} 
+                                <Image className="rounded-tl-[25%] rounded-br-[25%]"src={"/icons/ins.svg"} 
                                 alt={"icon"} 
                                 width={"16"} 
                                 height={"16"}/>
@@ -198,7 +198,7 @@ const AboutPage = () => {
                 </div>
             </div>
             <div className="max-md:hidden">
-                <Image src={"image/background-img.svg"} 
+                <Image src={"/image/background-img.svg"} 
                             alt={"image"} 
                             width={"590"} 
                             height={"640"}/>
