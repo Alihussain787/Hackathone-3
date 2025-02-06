@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Shop = () => {
     return(
-        <div>
+        <div className="flex flex-col items-center justify-center">
             <div className="max-[920px]:hidden">
                 <Header/>
             </div>

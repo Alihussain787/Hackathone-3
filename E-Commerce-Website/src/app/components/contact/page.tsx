@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Contact = () => {
     return(
-        <div>
+        <div className="flex flex-col items-center justify-center">
         <Header />
         <section className="container2 w-full max-w-[1439px] py-20 flex items-center justify-center">
         <div className="w-[1044px]">
@@ -17,19 +17,19 @@ const Contact = () => {
                     <p className="text-[24px] font-bold text-[#252B42]">Fax : +451 215 215</p>
                 </div>
                 <div className="flex gap-[34px] max-md:justify-center">
-                    <Image src={"icons/tw-icon.svg"} 
+                    <Image src={"/icons/tw-icon.svg"} 
                         alt={"image"} 
                         width={"30"} 
                         height={"24"}/>
-                    <Image src={"icons/fb-icon.svg"} 
+                    <Image src={"/icons/fb-icon.svg"} 
                         alt={"image"} 
                         width={"30"} 
                         height={"24"}/>
-                    <Image src={"icons/insta-icon.svg"} 
+                    <Image src={"/icons/insta-icon.svg"} 
                         alt={"image"} 
                         width={"30"} 
                         height={"24"}/>
-                    <Image src={"icons/li-icon.svg"} 
+                    <Image src={"/icons/li-icon.svg"} 
                         alt={"image"} 
                         width={"30"} 
                         height={"24"}/>

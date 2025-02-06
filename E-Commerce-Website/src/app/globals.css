@@ -66,31 +66,31 @@ body {
 }
 #shop-img1{
   background-image: url('/image/shop-img-1.svg');
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
 #shop-img2{
   background-image: url('/image/shop-img-2.svg');
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
 #shop-img3{
   background-image: url('/image/shop-img-3.svg');
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
 #shop-img4{
   background-image: url('/image/shop-img-4.svg');
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
 #shop-img5{
   background-image: url('/image/shop-img-5.svg');
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }

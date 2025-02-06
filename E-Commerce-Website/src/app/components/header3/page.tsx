@@ -26,7 +26,7 @@ const header2 = () => {
     }
 
     return(
-        <div>
+        <div className="flex flex-col items-center justify-center">
         <header className="w-full max-w-[1439px] flex items-center justify-center flex-col gap-[16px] max-lg:gap-0">
                 <div className="w-full max-w-[1050px] max-lg:max-w-[1024px] bg-[#FFFFFF] flex items-center py-[12px] max-lg:bg-white max-lg:py-[24px] relative z-50 px-6">
                 <nav className="w-full flex justify-between gap-28 max-lg:w-full  max-lg:px-6 ">
